@@ -1,0 +1,143 @@
+# Session 2 Exercise: Context Engineering + Comms & Scheduling
+
+## Goal
+Write an INITIAL.md for the comms and scheduling system, generate a PRP from it, execute the PRP, and watch Claude Code build the entire system from a blueprint.
+
+## Step 1: Understand Context Engineering (10 min)
+
+**The core idea:** Most agent failures aren't model failures — they're context failures. Context engineering means giving the AI a complete blueprint, not a clever prompt.
+
+| Prompt Engineering | Context Engineering |
+|---|---|
+| "Write me a meetup announcement" | Here's the event plan JSON, the audience profile, the tone rules, 3 example announcements, and the email template — now write the announcement |
+| Clever wording | Complete system |
+| Sticky note | Full screenplay |
+
+**Try the difference yourself** — in Claude Code, try these two prompts and compare the output quality:
+
+Prompt 1 (no context):
+```
+Write an announcement email for a RAG pipelines meetup
+```
+
+Prompt 2 (with context):
+```
+Read the event plan at events/building-rag-pipelines.json, read data/speakers.json
+for speaker bios, and read examples/sample-event-plan.json for the expected format.
+Now write an announcement email targeting intermediate Python developers.
+Keep it under 200 words, include the date, venue, and speaker highlights.
+```
+
+## Step 2: Write Your INITIAL.md (15 min)
+
+Create `INITIAL.md` in your project root:
+
+```markdown
+## FEATURE:
+Build a communications and scheduling system for MeetupBot. The system should:
+- Generate event schedules that fit talks into time slots with breaks, using speaker
+  availability from data/speakers.json
+- Draft announcement emails tailored to the target audience from the event plan
+- Draft personalized speaker outreach emails referencing their topics and past talks
+- All commands should consume the structured event plan JSON from /plan-event output
+
+## EXAMPLES:
+- Event plan format: see examples/sample-event-plan.json
+- Speaker data: see data/speakers.json (note the availability field)
+- Venue data: see data/venues.json (note the capacity and amenities fields)
+- Existing command pattern: see .claude/commands/plan-event.md for how slash commands are structured
+
+## DOCUMENTATION:
+- Event plan JSON schema is defined in CLAUDE.md
+- Schedules should account for: talk duration, speaker availability, break intervals (every 90 min), setup/teardown time
+- Announcement emails should include: event name, date, venue, speaker highlights, RSVP link placeholder, target audience hook
+- Speaker outreach should include: personalized topic reference, event description, logistics, ask
+
+## OTHER CONSIDERATIONS:
+- IMPORTANT: All slash commands must read the event plan JSON as input, not ask the user to retype details
+- Schedule must validate that no speaker is double-booked
+- Announcements should match the tone defined in CLAUDE.md
+- Use $ARGUMENTS in slash commands for the event plan file path
+- The /build-schedule command should output a markdown table AND a JSON file
+```
+
+## Step 3: Generate the PRP (10 min)
+
+Run in Claude Code:
+```
+/generate-prp INITIAL.md
+```
+
+Watch Claude:
+1. Read your INITIAL.md
+2. Analyze your existing codebase (CLAUDE.md, existing commands, data files)
+3. Research patterns from your examples/ folder
+4. Create a comprehensive PRP at `PRPs/meetup-comms.md`
+
+**Open `PRPs/meetup-comms.md` and review it:**
+- Does it understand the data flow (event plan → schedule, event plan → emails)?
+- Did it pick up the speaker availability constraint?
+- Are there validation steps?
+
+## Step 4: Execute the PRP (15 min)
+
+Run:
+```
+/execute-prp PRPs/meetup-comms.md
+```
+
+Claude will:
+1. Create `.claude/commands/build-schedule.md`
+2. Create `.claude/commands/draft-announcement.md`
+3. Create `.claude/commands/draft-speaker-outreach.md`
+4. Validate the commands work with existing event plan data
+5. Run its own tests
+
+## Step 5: Test the Full Pipeline (10 min)
+
+Run the commands in sequence, each consuming data from the previous step:
+
+```
+/plan-event "Prompt Engineering vs Context Engineering"
+```
+
+Then use the generated event plan:
+```
+/build-schedule events/prompt-engineering-vs-context-engineering.json
+```
+
+```
+/draft-announcement events/prompt-engineering-vs-context-engineering.json
+```
+
+```
+/draft-speaker-outreach events/prompt-engineering-vs-context-engineering.json
+```
+
+**Check the outputs:**
+- Does the schedule avoid speaker conflicts?
+- Does the announcement reference the right speakers and venue?
+- Are the speaker outreach emails personalized?
+
+Commit your work:
+```bash
+git add -A
+git commit -m "feat: comms and scheduling system via PRP"
+```
+
+## Checkpoint ✓
+
+You should now have:
+- [ ] INITIAL.md with complete feature request
+- [ ] `PRPs/meetup-comms.md` generated PRP
+- [ ] `.claude/commands/build-schedule.md` working command
+- [ ] `.claude/commands/draft-announcement.md` working command
+- [ ] `.claude/commands/draft-speaker-outreach.md` working command
+- [ ] At least 2 event plans with matching schedules and announcements
+- [ ] All commands consume structured JSON, not freeform input
+
+## Bonus Challenges
+
+1. Edit the PRP to add a `/draft-followup` command for post-RSVP confirmation emails, then re-execute
+2. Add more examples to `examples/` — sample announcement emails from real meetups — and regenerate the PRP to see if quality improves
+3. Build a `/validate-schedule` command that checks a schedule for conflicts, missing breaks, and overtime
