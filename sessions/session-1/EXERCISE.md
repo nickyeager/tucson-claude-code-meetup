@@ -139,6 +139,24 @@ You should now have:
 - [ ] `examples/sample-event-plan.json` reference output
 - [ ] At least one generated event plan in `events/`
 
+## Stuck?
+
+If you're blocked or your output doesn't look right, compare your project against the reference implementation:
+
+```bash
+# See what your project should look like after this session
+ls -R ../../solution/session-1/
+
+# Compare a specific file
+diff your-file.md ../../solution/session-1/equivalent-file.md
+```
+
+You can also copy the entire solution to catch up:
+```bash
+cp -r ../../solution/session-1/* .
+cp -r ../../solution/session-1/.claude .
+```
+
 ## Bonus Challenges
 
 1. Add a `data/topics-calendar.json` with seasonal AI topics (e.g., "NeurIPS recap" in December) and have `/plan-event` suggest timely topics

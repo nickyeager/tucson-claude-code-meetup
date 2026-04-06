@@ -10,6 +10,18 @@ A hands-on, 4-session course where you build **MeetupBot** — an AI-powered age
 - Text editor (VS Code recommended)
 - ngrok account with AI Gateway access (or a direct LLM provider API key as fallback)
 
+### Verify Your Setup
+
+Run these commands to confirm everything is installed:
+
+```bash
+node --version    # Should be v18+
+git --version     # Any recent version
+npm --version     # Should be v9+
+```
+
+If any command fails, install the missing tool before Session 1. Claude Code requires Node.js 18 or later.
+
 ## Quick Start
 
 ```bash
@@ -127,6 +139,16 @@ These patterns transfer to any agent project:
 | Parallel generation | 4 | Non-determinism becomes an advantage with evaluation |
 | Feedback loops | 4 | Agents that learn from past results |
 
+> **Scaling tip:** As your CLAUDE.md files grow across projects, [RuleMetric](https://github.com/nickyeager/momento-mori) helps manage instructions at scale — write once, convert to any AI tool format, and track what actually works.
+
+## Course Progression
+
+Each session builds directly on the previous one:
+
+- **Session 1 → 2**: You'll go from manually prompting Claude to engineering complete context. The event plans you built with `/plan-event` become the structured data that powers Session 2's comms and scheduling pipeline. This is the key shift: *stop typing clever prompts, start building information systems.*
+- **Session 2 → 3**: Your monolithic agent works, but it does everything mediocrely. Session 3 breaks it into specialists that each do one thing well — and wires hooks to automate quality checks you'd otherwise forget.
+- **Session 3 → 4**: With specialists in place, you can now run them in parallel to generate competing solutions, evaluate objectively, and build a feedback loop that makes every future event better.
+
 ## ngrok AI Gateway
 
 This course uses ngrok AI Gateway to route LLM calls to multiple providers through a single endpoint. Benefits:
@@ -145,6 +167,7 @@ This course uses ngrok AI Gateway to route LLM calls to multiple providers throu
 - [ngrok AI Gateway Docs](https://ngrok.com/docs/ai-gateway/)
 - [Context Engineering Best Practices](https://www.philschmid.de/context-engineering)
 - [Claude Code Best Practices](https://www.anthropic.com/engineering/claude-code-best-practices)
+- [RuleMetric](https://github.com/nickyeager/momento-mori) — Universal instruction management for AI coding tools. Write CLAUDE.md once, convert to 25+ tool formats, track instruction effectiveness across projects. A natural next step once you're managing instructions at scale.
 
 ## Attribution
 

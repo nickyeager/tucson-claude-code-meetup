@@ -136,6 +136,8 @@ Use the comms-reviewer agent to review the announcement for events/prompt-engine
 
 Create `.claude/hooks/auto-review.sh`:
 
+> **What is this?** This is a PostToolUse hook — a shell script that Claude Code runs automatically every time Claude uses the Write tool. It checks if the file being written is in the `comms/` directory, and if so, logs a review trigger. The hook reads JSON from stdin containing the tool name and file path.
+
 ```bash
 #!/bin/bash
 # Auto-review any drafted communications
@@ -160,6 +162,14 @@ Make it executable:
 ```bash
 chmod +x .claude/hooks/auto-review.sh
 ```
+
+> **How hooks work:** Claude Code supports 4 lifecycle events:
+> - `PreToolUse` — runs before Claude uses a tool (can block it)
+> - `PostToolUse` — runs after Claude uses a tool (can react to it)
+> - `UserPromptSubmit` — runs when you send a message
+> - `Stop` — runs when Claude finishes responding
+>
+> Each hook is a shell script that receives JSON on stdin with details about the event. The script below is a `PostToolUse` hook that fires on every `Write` tool use.
 
 Register the hook in `.claude/settings.local.json`:
 
@@ -234,6 +244,24 @@ You should now have:
 - [ ] Hook registered in `.claude/settings.local.json`
 - [ ] Hook fires when a comm is written (check `.claude/logs/reviews.log`)
 - [ ] Visible quality improvement vs. the monolithic approach from Step 1
+
+## Stuck?
+
+If you're blocked or your output doesn't look right, compare your project against the reference implementation:
+
+```bash
+# See what your project should look like after this session
+ls -R ../../solution/session-3/
+
+# Compare a specific file
+diff your-file.md ../../solution/session-3/equivalent-file.md
+```
+
+You can also copy the entire solution to catch up:
+```bash
+cp -r ../../solution/session-3/* .
+cp -r ../../solution/session-3/.claude .
+```
 
 ## Bonus Challenges
 

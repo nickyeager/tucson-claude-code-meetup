@@ -48,6 +48,24 @@ Save outputs to:
 Run all 3 in parallel using subagents.
 ```
 
+> **How parallel subagents work in Claude Code:**
+> When you ask Claude to "run 3 parallel subagents," Claude Code uses its built-in Agent tool with `isolation: "worktree"` to give each subagent an isolated copy of your repo via git worktrees. They run simultaneously without file conflicts.
+>
+> You don't need special syntax — just describe what you want in natural language. Claude Code handles the orchestration:
+> - Each subagent gets its own context window (no cross-contamination)
+> - Each works in an isolated git worktree (no file conflicts)
+> - Results are merged back when all complete
+>
+> If Claude doesn't automatically parallelize, you can be more explicit:
+> ```
+> Run these as 3 separate subagents in parallel, each in its own worktree:
+> - Subagent 1: [community-first instructions]
+> - Subagent 2: [deep-dive instructions]
+> - Subagent 3: [workshop-lab instructions]
+> ```
+>
+> **Tip:** You'll see Claude Code mention "launching agent" in the terminal for each variant. They run concurrently — you don't wait for one to finish before the next starts.
+
 > **What's happening under the hood:** Claude Code uses git worktrees to give each subagent an isolated copy of your repo. They run simultaneously without stepping on each other's files. You don't need to manage the git branches — Claude handles it.
 
 ## Step 3: Evaluate Each Variant (10 min)
@@ -131,6 +149,16 @@ Now plan a new event and see if the agent uses the feedback:
 /plan-event "Advanced RAG: Multi-Modal Retrieval"
 ```
 
+> **Wiring the loop:** For `/plan-event` to actually use past feedback, your plan-event command needs to read from `data/past-events/`. If your `/plan-event` command doesn't already do this, update `.claude/commands/plan-event.md` to include:
+> ```
+> Before generating the plan, read all files in data/past-events/ for lessons learned
+> from previous events. Apply these lessons to your recommendations:
+> - Adjust venue suggestions based on past venue ratings and feedback
+> - Adjust format and schedule based on past format ratings
+> - Account for attendance patterns (actual vs estimated from past events)
+> ```
+> This is what "closing the loop" means — the output of `/post-event` becomes input for future `/plan-event` calls.
+
 **Check:** Does the new plan account for the lessons learned? Does it suggest a venue with better WiFi? Does it adjust the workshop/talk ratio?
 
 Commit your final system:
@@ -149,6 +177,24 @@ You should now have:
 - [ ] `.claude/commands/post-event.md` working slash command
 - [ ] `data/past-events/` with at least one recap entry
 - [ ] Feedback loop working — new `/plan-event` calls learn from past events
+
+## Stuck?
+
+If you're blocked or your output doesn't look right, compare your project against the reference implementation:
+
+```bash
+# See what your project should look like after this session
+ls -R ../../solution/session-4/
+
+# Compare a specific file
+diff your-file.md ../../solution/session-4/equivalent-file.md
+```
+
+You can also copy the entire solution to catch up:
+```bash
+cp -r ../../solution/session-4/* .
+cp -r ../../solution/session-4/.claude .
+```
 
 ## Bonus Challenges
 

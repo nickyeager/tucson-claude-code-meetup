@@ -28,6 +28,12 @@ Now write an announcement email targeting intermediate Python developers.
 Keep it under 200 words, include the date, venue, and speaker highlights.
 ```
 
+> **Template available:** This repo includes an INITIAL.md template at `templates/INITIAL.md` and a filled-out example at `templates/INITIAL_EXAMPLE.md`. You can reference these for the expected structure, but writing your own from scratch is part of the learning. The four sections are:
+> - **FEATURE:** What to build (be specific about functionality)
+> - **EXAMPLES:** Which files to learn from (point to specific paths)
+> - **DOCUMENTATION:** Schemas, constraints, API docs
+> - **OTHER CONSIDERATIONS:** Edge cases, gotchas, things AI commonly misses
+
 ## Step 2: Write Your INITIAL.md (15 min)
 
 Create `INITIAL.md` in your project root:
@@ -60,6 +66,14 @@ Build a communications and scheduling system for MeetupBot. The system should:
 - Use $ARGUMENTS in slash commands for the event plan file path
 - The /build-schedule command should output a markdown table AND a JSON file
 ```
+
+> **Where does `/generate-prp` come from?** It's a custom slash command defined in `.claude/commands/generate-prp.md`. You can find a ready-made version in this repo's `templates/.claude/commands/` folder. Copy it into your project's `.claude/commands/` directory before running Step 3:
+> ```bash
+> mkdir -p .claude/commands
+> cp ../../templates/.claude/commands/generate-prp.md .claude/commands/
+> cp ../../templates/.claude/commands/execute-prp.md .claude/commands/
+> ```
+> These commands tell Claude how to research your codebase, generate implementation blueprints, and execute them with validation gates.
 
 ## Step 3: Generate the PRP (10 min)
 
@@ -135,6 +149,24 @@ You should now have:
 - [ ] `.claude/commands/draft-speaker-outreach.md` working command
 - [ ] At least 2 event plans with matching schedules and announcements
 - [ ] All commands consume structured JSON, not freeform input
+
+## Stuck?
+
+If you're blocked or your output doesn't look right, compare your project against the reference implementation:
+
+```bash
+# See what your project should look like after this session
+ls -R ../../solution/session-2/
+
+# Compare a specific file
+diff your-file.md ../../solution/session-2/equivalent-file.md
+```
+
+You can also copy the entire solution to catch up:
+```bash
+cp -r ../../solution/session-2/* .
+cp -r ../../solution/session-2/.claude .
+```
 
 ## Bonus Challenges
 
