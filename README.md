@@ -94,7 +94,7 @@ Each session folder is self-contained — you can `cp -r solution/session-N/ my-
 
 The `references/claude-howto/` directory contains the complete [Claude How-To](https://github.com/luongnv89/claude-howto) guides — 10 progressive tutorial modules with copy-paste templates, visual diagrams, and working examples for every Claude Code feature. Use these as deep-dive companions for each session.
 
-The `templates/` directory contains context engineering templates from the [Context Engineering Intro](https://github.com/coleam00/context-engineering-intro) — including CLAUDE.md, INITIAL.md, PRP templates, and slash commands for the generate/execute PRP workflow.
+The `templates/` directory contains context engineering templates adapted from the [Context Engineering Intro](https://github.com/coleam00/context-engineering-intro) — including `CLAUDE-starter.md` (a ready-to-use MeetupBot CLAUDE.md), `INITIAL.md` and `INITIAL_EXAMPLE.md` (feature request templates), and slash commands for the `/generate-prp` and `/execute-prp` workflow used in Session 2.
 
 See the [Reference Guide](references/claude-howto/LEARNING-ROADMAP.md) for the full learning roadmap.
 
@@ -177,13 +177,13 @@ This course uses ngrok AI Gateway to route LLM calls to multiple providers throu
 
 ## Resources
 
-- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
-- [Claude Agent SDK](https://docs.anthropic.com/en/docs/agent-sdk) — Embed Claude Code agents in your own apps (Python + TypeScript)
+- [Claude Code Documentation](https://code.claude.com/docs)
+- [Claude Agent SDK](https://code.claude.com/docs/en/agent-sdk) — Embed Claude Code agents in your own apps (Python + TypeScript)
 - [Claude How-To Guide](https://github.com/luongnv89/claude-howto) — Visual tutorials and templates for all Claude Code features
 - [Context Engineering Intro](https://github.com/coleam00/context-engineering-intro) — Context engineering templates and PRP workflow
 - [ngrok AI Gateway Docs](https://ngrok.com/docs/ai-gateway/)
 - [Context Engineering Best Practices](https://www.philschmid.de/context-engineering)
-- [Claude Code Best Practices](https://www.anthropic.com/engineering/claude-code-best-practices)
+- [Claude Code Best Practices](https://code.claude.com/docs/en/best-practices)
 - [RuleMetric](https://github.com/nickyeager/momento-mori) — Universal instruction management for AI coding tools. Write CLAUDE.md once, convert to 25+ tool formats, track instruction effectiveness across projects. A natural next step once you're managing instructions at scale.
 
 ## Attribution

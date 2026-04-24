@@ -100,11 +100,9 @@ File: `.claude/agents/schedule-optimizer.md`
 ```markdown
 ---
 name: schedule-optimizer
-description: Analyzes event schedules for conflicts,
+description: Proactively analyzes event schedules for conflicts,
   optimizes time slots, and balances topic distribution.
-tools:
-  - Read
-  - Glob
+tools: Read, Grep, Glob
 ---
 
 # Schedule Optimizer Agent
@@ -136,7 +134,7 @@ Return a JSON object with:
 | Concept | Detail |
 |---------|--------|
 | **Own context window** | Fresh context, no bleed from parent |
-| **Limited tools** | Only what it needs — `Read`, `Glob`, not `Write` |
+| **Limited tools** | Only what it needs — `Read`, `Grep`, `Glob`, not `Write` |
 | **"Proactively" keyword** | In description: tells Claude to auto-invoke |
 | **One-shot design** | Does its job, returns result, exits |
 | **Structured output** | JSON contract for reliable handoff |
@@ -239,8 +237,8 @@ ngrok AI Gateway handles routing — you set the rules.
 | `PostToolUse` | After a tool completes | Trigger reviews, log actions, notify |
 | `UserPromptSubmit` | When user sends a message | Validate/transform input, add context |
 | `Stop` | When agent finishes responding | Summarize, commit, clean up |
-| `CwdChanged` | When working directory changes | Track context switches |
-| `FileChanged` | When a file is modified | React to external changes |
+| `SubagentStop` | When a subagent finishes | Process subagent results |
+| `Notification` | When a notification is sent | React to system events |
 
 Each hook receives **JSON on stdin** with event details (tool name, file path, etc.).
 
@@ -271,7 +269,7 @@ FILE_PATH=$(echo "$INPUT" | python3 -c \
   "import sys,json; d=json.load(sys.stdin); print(d.get('tool_input',{}).get('file_path',''))" 2>/dev/null)
 
 if [[ "$TOOL_NAME" == "Write" ]]; then
-    if [[ "$FILE_PATH" == *"comms/"* || "$FILE_PATH" == *"announcement"* ]]; then
+    if [[ "$FILE_PATH" == *"comms/"* || "$FILE_PATH" == *"announcement"* || "$FILE_PATH" == *"outreach"* ]]; then
         mkdir -p .claude/logs
         echo "$(date): Auto-review triggered for $FILE_PATH" >> .claude/logs/reviews.log
         echo "New communication drafted: $FILE_PATH — comms-reviewer will evaluate."
@@ -295,7 +293,12 @@ File: `.claude/settings.local.json`
     "PostToolUse": [
       {
         "matcher": "Write",
-        "command": ".claude/hooks/auto-review.sh"
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/auto-review.sh"
+          }
+        ]
       }
     ]
   }
@@ -306,7 +309,8 @@ File: `.claude/settings.local.json`
 |-------|---------|
 | `PostToolUse` | Fire after a tool runs |
 | `matcher` | Only trigger on `Write` tool |
-| `command` | Script to execute |
+| `hooks` | Array of hook actions to execute |
+| `type` + `command` | Run a shell command |
 
 Hook receives the **tool event as JSON on stdin**.
 
@@ -397,7 +401,7 @@ Tasks:
 
 **Time: ~35 minutes**
 
-Exercise details: `class/session-3/EXERCISE.md`
+Exercise details: `sessions/session-3/EXERCISE.md`
 
 ---
 

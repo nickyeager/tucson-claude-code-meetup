@@ -130,8 +130,8 @@ These patterns transfer to any agent project:
 
 ## Resources
 
-- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
-- [Claude Agent SDK](https://docs.anthropic.com/en/docs/agent-sdk)
+- [Claude Code Documentation](https://code.claude.com/docs)
+- [Claude Agent SDK](https://code.claude.com/docs/en/agent-sdk)
 - [ngrok AI Gateway Docs](https://ngrok.com/docs/ai-gateway/)
 - [Context Engineering Best Practices](https://www.philschmid.de/context-engineering)
-- [Claude Code Best Practices](https://www.anthropic.com/engineering/claude-code-best-practices)
+- [Claude Code Best Practices](https://code.claude.com/docs/en/best-practices)

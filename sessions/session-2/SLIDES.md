@@ -328,7 +328,7 @@ This is how you make commands reusable across different events.
 
 ### Exercise: Build the Comms & Scheduling System via PRP
 
-See `session-2/EXERCISE.md` for step-by-step instructions.
+See `sessions/session-2/EXERCISE.md` for step-by-step instructions.
 
 **Goal:** A pipeline where:
 ```

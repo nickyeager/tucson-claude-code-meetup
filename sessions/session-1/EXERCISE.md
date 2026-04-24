@@ -174,19 +174,23 @@ You should now have:
 
 If you're blocked or your output doesn't look right, compare your project against the reference implementation:
 
+In the course repo, the `solution/session-1/` directory has a complete reference implementation. Compare your files against it:
+
 ```bash
 # See what your project should look like after this session
-ls -R ../../solution/session-1/
+ls -R /path/to/course-repo/solution/session-1/
 
-# Compare a specific file
-diff your-file.md ../../solution/session-1/equivalent-file.md
+# Compare a specific file (adjust paths to your setup)
+diff CLAUDE.md /path/to/course-repo/solution/session-1/CLAUDE.md
 ```
 
 You can also copy the entire solution to catch up:
 ```bash
-cp -r ../../solution/session-1/* .
-cp -r ../../solution/session-1/.claude .
+cp -r /path/to/course-repo/solution/session-1/* .
+cp -r /path/to/course-repo/solution/session-1/.claude .
 ```
+
+> Replace `/path/to/course-repo/` with the actual path where you cloned the course materials.
 
 ## Bonus Challenges
 

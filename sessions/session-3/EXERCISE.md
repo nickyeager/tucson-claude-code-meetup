@@ -5,7 +5,9 @@ Break the monolithic agent into specialists — a schedule optimizer and a comms
 
 ## Step 1: Experience the Problem (10 min)
 
-Before building subagents, see why they're needed. Try this all-in-one prompt:
+Before building subagents, see why they're needed. First, make sure you have an event plan to work with — if you don't have one from Session 2, run `/plan-event "Prompt Engineering vs Context Engineering"` to generate one now.
+
+Then try this all-in-one prompt (adjust the filename to match your actual event plan):
 
 ```
 Read events/prompt-engineering-vs-context-engineering.json.
@@ -31,8 +33,6 @@ Create `.claude/agents/schedule-optimizer.md`:
 name: schedule-optimizer
 description: "Schedule optimization specialist. Proactively optimizes any meetup schedule for speaker conflicts, break intervals, and audience energy. Reads event plans and speaker data to produce conflict-free schedules with reasoning."
 tools: Read, Grep, Glob
-denied_tools: Edit, Write, Bash
-initialPrompt: "Read the event plan and speaker data, then produce a schedule optimization report."
 ---
 
 You are a meetup schedule optimization specialist.
@@ -78,9 +78,9 @@ WARNINGS: {any remaining issues}
 - Prefer 30-min talk slots and 15-min breaks unless the event format specifies otherwise
 ```
 
-**Why `denied_tools`?** Notice the `denied_tools: Edit, Write, Bash` line. This is a critical safety pattern: the schedule optimizer should *analyze and report*, not modify files directly. By denying write-capable tools, you guarantee this agent can't accidentally overwrite your event plan or run arbitrary commands. Each specialist gets only the tools it needs — the principle of least privilege applied to AI agents.
+**Why limit tools?** Notice the `tools: Read, Grep, Glob` line only lists read-only tools. This is a critical safety pattern: the schedule optimizer should *analyze and report*, not modify files directly. By only granting read-capable tools, you guarantee this agent can't accidentally overwrite your event plan or run arbitrary commands. Each specialist gets only the tools it needs — the principle of least privilege applied to AI agents.
 
-Test it manually:
+Test it manually (adjust the filename to match your event plan):
 ```
 Use the schedule-optimizer agent to optimize the schedule for events/prompt-engineering-vs-context-engineering.json
 ```
@@ -94,8 +94,6 @@ Create `.claude/agents/comms-reviewer.md`:
 name: comms-reviewer
 description: "Communications quality reviewer. Proactively reviews any drafted email or announcement for tone, completeness, and missing information. Scores 1-10 and suggests specific improvements."
 tools: Read, Grep, Glob
-denied_tools: Edit, Write, Bash
-initialPrompt: "Read the drafted communication and produce a quality review with a score and specific suggestions."
 ---
 
 You are a communications quality reviewer for AI developer meetup announcements.
@@ -171,7 +169,7 @@ Make it executable:
 chmod +x .claude/hooks/auto-review.sh
 ```
 
-> **How hooks work:** Claude Code supports 4 lifecycle events:
+> **How hooks work:** Claude Code supports these lifecycle events:
 > - `PreToolUse` — runs before Claude uses a tool (can block it)
 > - `PostToolUse` — runs after Claude uses a tool (can react to it)
 > - `UserPromptSubmit` — runs when you send a message
@@ -181,7 +179,7 @@ chmod +x .claude/hooks/auto-review.sh
 >
 > **Conditional hooks (new):** You can make hooks more targeted with an `if` field. For example, to only fire on git commits: `"if": "Bash(git commit *)"`. This prevents the hook from firing on every Bash call.
 >
-> **More hook events:** Beyond the four above, Claude Code now also supports `CwdChanged` (working directory changes) and `FileChanged` (file modifications).
+> **More hook events:** Beyond the four above, Claude Code also supports `SubagentStop` (when a subagent finishes) and `Notification` (system notifications).
 
 Register the hook in `.claude/settings.local.json`:
 
@@ -261,19 +259,23 @@ You should now have:
 
 If you're blocked or your output doesn't look right, compare your project against the reference implementation:
 
+In the course repo, the `solution/session-3/` directory has a complete reference implementation. Compare your files against it:
+
 ```bash
 # See what your project should look like after this session
-ls -R ../../solution/session-3/
+ls -R /path/to/course-repo/solution/session-3/
 
-# Compare a specific file
-diff your-file.md ../../solution/session-3/equivalent-file.md
+# Compare a specific file (adjust paths to your setup)
+diff .claude/agents/schedule-optimizer.md /path/to/course-repo/solution/session-3/.claude/agents/schedule-optimizer.md
 ```
 
 You can also copy the entire solution to catch up:
 ```bash
-cp -r ../../solution/session-3/* .
-cp -r ../../solution/session-3/.claude .
+cp -r /path/to/course-repo/solution/session-3/* .
+cp -r /path/to/course-repo/solution/session-3/.claude .
 ```
+
+> Replace `/path/to/course-repo/` with the actual path where you cloned the course materials.
 
 ## Bonus Challenges
 

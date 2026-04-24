@@ -89,8 +89,8 @@ Powered by **Claude Opus 4.7** — 1M token context window. Not a chatbot. A **c
 npm install -g @anthropic-ai/claude-code
 
 # Create your project
-mkdir meetup-bot
-cd meetup-bot
+mkdir meetup-agent
+cd meetup-agent
 git init
 
 # Launch Claude Code
@@ -172,8 +172,8 @@ Concise and actionable — no filler.
 IMPORTANT: All event data MUST be structured JSON.
 
 ## Event Plan Schema
-- eventName, description, format, targetAudience
-- estimatedAttendees, suggestedDuration, topicTags
+- eventName, description, date, format, targetAudience
+- estimatedAttendees, suggestedDuration, topicTags, prerequisites
 - suggestedSpeakers: [{id, name, reason}]
 - suggestedVenue: {id, name, reason}
 - schedule: {totalMinutes, slots: [{time, duration, type, title}]}
@@ -310,13 +310,10 @@ NGROK_AI_GATEWAY_URL=https://your-gateway.ngrok.app
 
 ```json
 {
-  "gateway_url": "https://your-gateway.ngrok.app",
-  "api_key": "ngrok-...",
-  "default_model": "claude-sonnet-4-20250514",
-  "fallback_models": [
-    "gpt-4o",
-    "gemini-pro"
-  ]
+  "baseUrl": "https://your-gateway.ngrok.app/v1",
+  "apiKey": "ngrok-...",
+  "defaultModel": "ngrok/auto",
+  "fallbackModel": "gpt-4o"
 }
 ```
 
@@ -373,11 +370,10 @@ Plan a meetup event for the following topic: $ARGUMENTS
 Follow these steps:
 1. Read CLAUDE.md for output format rules
 2. Generate an event plan as structured JSON
-3. Include: event_name, date, description,
-   target_audience, suggested_speakers, agenda,
-   and logistics
-4. Save the output to data/events/
-5. Commit with message "Add event plan: [topic]"
+3. Include: eventName, date, description,
+   targetAudience, suggestedSpeakers, schedule,
+   and estimatedCost
+4. Save the output to events/
 
 IMPORTANT: Output MUST be valid JSON matching
 the schema in CLAUDE.md.
@@ -400,13 +396,13 @@ the schema in CLAUDE.md.
 
 ```json
 {
-  "event_name": "Building RAG Pipelines",
+  "eventName": "Building RAG Pipelines",
   "date": "2026-04-15T18:30:00",
   "description": "Hands-on session covering...",
-  "target_audience": "Intermediate developers...",
-  "suggested_speakers": [...],
-  "agenda": [...],
-  "logistics": {...}
+  "targetAudience": "Intermediate developers...",
+  "suggestedSpeakers": [...],
+  "schedule": [...],
+  "estimatedCost": {...}
 }
 ```
 
@@ -460,7 +456,7 @@ If everything is `IMPORTANT`, nothing is. Reserve these for rules that **truly m
 
 # BUILD TIME
 
-### Exercise: `session-1/EXERCISE.md`
+### Exercise: `sessions/session-1/EXERCISE.md`
 
 **Goal:** Get `/plan-event` generating structured JSON event plans.
 

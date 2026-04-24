@@ -1,6 +1,6 @@
 # Session 2 Speaker Script
 
-**Total time:** ~60 minutes (20 min instruction, 40 min exercise, 5 min wrap)
+**Total time:** ~70 minutes (25 min instruction, 40 min exercise, 5 min wrap)
 
 ---
 
@@ -268,7 +268,7 @@
 ## Slide 18: BUILD TIME
 **[~40 min — exercise time]**
 
-"Open `session-2/EXERCISE.md` and follow the steps. You're building the full pipeline: plan-event into build-schedule into draft-announcement."
+"Open `sessions/session-2/EXERCISE.md` and follow the steps. You're building the full pipeline: plan-event into build-schedule into draft-announcement."
 
 "The exercise has five steps. Step 1 is understanding the concepts — you just sat through that, so skim it. Step 2 is writing your INITIAL.md — that's the hardest part, spend time on it. Steps 3 and 4 are running generate-prp and execute-prp. Step 5 is testing the full pipeline."
 

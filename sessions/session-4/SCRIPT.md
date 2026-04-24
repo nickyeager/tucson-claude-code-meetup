@@ -1,6 +1,6 @@
 # Session 4 Speaker Script
 
-**Total time:** ~60 minutes (25 min instruction + 35 min exercise)
+**Total time:** ~70 minutes (30 min instruction + 35 min exercise + 5 min wrap)
 
 ---
 
@@ -24,7 +24,7 @@ Today we're going to do something that might sound a little wild: we're going to
 
 Let's take a quick inventory of what you've built. This is real. You built all of this.
 
-`/plan-event` kicks things off -- structured event planning. `/build-schedule` creates a detailed timeline. The `schedule-optimizer` subagent reviews that schedule for quality. `/draft-announcement` writes comms. The auto-review hook fires on every commit. And the `comms-reviewer` subagent checks tone and clarity automatically.
+`/plan-event` kicks things off -- structured event planning. `/build-schedule` creates a detailed timeline. The `schedule-optimizer` subagent reviews that schedule for quality. `/draft-announcement` and `/draft-speaker-outreach` handle comms. The auto-review hook fires on every comms write. And the `comms-reviewer` subagent checks tone and clarity automatically.
 
 That's a legitimate agent system. Multiple specialized components working together.
 
@@ -237,7 +237,7 @@ Let's zoom out. Look at what you've built across four sessions.
 
 Session 1: an agent that plans events with structured output. Session 2: a composable pipeline of commands. Session 3: quality automation with specialist subagents. Session 4: self-improvement through parallel generation and feedback.
 
-Six slash commands. Two subagents. One hook. One feedback loop.
+Five slash commands. Two subagents. One hook. One feedback loop.
 
 [PAUSE]
 
@@ -272,7 +272,7 @@ MeetupBot was the vehicle. These patterns are the destination. Take them to your
 ## Slide 20: BUILD TIME
 **[~1 min]**
 
-Alright, your turn. Last exercise of the course. Make it count.
+Alright, your turn. Last exercise of the course. The exercise is in `sessions/session-4/EXERCISE.md`. Make it count.
 
 You're going to build the parallel variant system, wire up evaluation using your existing subagents, build the `/post-event` command, and connect feedback into `/plan-event`.
 
@@ -312,6 +312,13 @@ Or take these patterns to a completely different project. Internal tools. Conten
 
 ---
 
+## Slide 22b: Current Claude Models
+**[~30 sec]**
+
+"Quick reference on current models — Opus 4.7 is the latest, a million-token context, best for complex reasoning and long autonomous tasks. Sonnet 4.6 is fast and capable for general use, also a million tokens. Haiku 4.5 is cheap and fast for triage and routing. That model routing we talked about in Session 3? Now you know the current lineup."
+
+---
+
 ## Slide 23: Course Recap
 **[~2 min]**
 
@@ -335,8 +342,6 @@ The meta-lesson across all four sessions: better context, better architecture, b
 **[~1 min]**
 
 Resources are on the screen. Claude Code docs, the Agent SDK, ngrok AI Gateway, the context engineering guide, and the course repo with everything we built.
-
-Quick reference on current models — Opus 4.7 is the latest, a million-token context, best for complex reasoning. Sonnet 4.6 is fast and capable for general use. Haiku 4.5 is cheap and fast for triage and routing. That model routing we talked about in Session 3? Now you know the current lineup.
 
 [PAUSE]
 

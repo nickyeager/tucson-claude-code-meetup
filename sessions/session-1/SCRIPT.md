@@ -1,13 +1,13 @@
 # Session 1 Speaker Script
 
-Total time: ~60 minutes (25 min instruction, 30 min exercise, 5 min wrap-up)
+Total time: ~65 minutes (30 min instruction, 30 min exercise, 5 min wrap-up)
 
 ---
 
 ## Slide 1: Title
 **Time: 1 min**
 
-"Hey everyone, welcome to the Tucson Claude Code Meetup. I'm [name], and today we're doing something fun — we're going to build an AI agent feature from scratch. Not a toy demo. An actual slash command that generates structured event plans. By the end of tonight, you'll have something working on your machine."
+"Hey everyone, welcome to the Tucson Claude Code Meetup. I'm Nick Yeager, and today we're doing something fun — we're going to build an AI agent feature from scratch. Not a toy demo. An actual slash command that generates structured event plans. By the end of tonight, you'll have something working on your machine."
 
 "This is Session 1 of four. Each session builds on the last, so by Session 4 you'll have a full agent with subagents, hooks, and a feedback loop. But tonight — fundamentals. Let's get into it."
 
@@ -62,7 +62,7 @@ Total time: ~60 minutes (25 min instruction, 30 min exercise, 5 min wrap-up)
 [DEMO] Open terminal. Run:
 ```
 npm install -g @anthropic-ai/claude-code
-mkdir meetup-bot && cd meetup-bot
+mkdir meetup-agent && cd meetup-agent
 git init
 claude
 ```
@@ -93,11 +93,11 @@ claude
 ## Slide 7: CLAUDE.md — Your Agent's Rulebook
 **Time: 2 min**
 
-"CLAUDE.md is the single most important concept tonight. It lives at your project root and Claude reads it at the start of every single conversation. Every time."
+"CLAUDE.md is the single most important concept today. It lives at your project root and Claude reads it at the start of every single conversation. Every time."
 
 "This is where you define how your agent behaves. Output formats, constraints, personality, conventions. Whatever you put in here becomes law."
 
-"This is what people mean when they say 'context engineering.' You're not writing a one-off prompt. You're programming persistent behavior. The difference is huge."
+"This is what people mean when they say 'context engineering.' You're not writing a one-off prompt. You're programming persistent behavior."
 
 **Transition:** "So what actually goes in this file?"
 
@@ -194,8 +194,8 @@ claude
 
 [DEMO] Show the config file:
 1. Create `config/ngrok-gateway.json`
-2. Walk through each field — gateway URL, API key, default model, fallbacks
-3. Show how Claude Code can use `--api-base` to point at the gateway
+2. Walk through each field — baseUrl, apiKey, defaultModel, fallbackModel
+3. Show how to set `ANTHROPIC_BASE_URL` environment variable to point at the gateway
 4. "If the gateway isn't working for you tonight, no worries. The setup guide in the repo has three options — ngrok, direct OpenAI, or direct Anthropic. All exercises work identically. Just swap the base URL in your config file."
 
 **Tip for common questions:** "If someone asks about latency — the gateway adds minimal overhead. We're talking single-digit milliseconds for routing. The model inference time dwarfs it."
@@ -278,7 +278,7 @@ claude
 ## Slide 20: BUILD TIME
 **Time: 30 min (exercise)**
 
-"Here's where you get your hands dirty. The exercise is in `session-1/EXERCISE.md`. Your goal: get `/plan-event` generating structured JSON."
+"Here's where you get your hands dirty. The exercise is in `sessions/session-1/EXERCISE.md`. Your goal: get `/plan-event` generating structured JSON."
 
 "You've got about 30 minutes. Here's my advice:"
 
@@ -352,10 +352,10 @@ claude
 
 | Section | Slides | Time |
 |---|---|---|
-| Intro & Setup | 1-6 | 8 min |
+| Intro & Setup | 1-6 | 10 min |
 | CLAUDE.md & Structure | 7-10 | 7 min |
 | Permissions & ngrok | 11-14 | 6 min |
-| Slash Commands & Tips | 15-19 | 4 min |
+| Slash Commands & Tips | 15-19 | 7 min |
 | **Build Time** | **20** | **30 min** |
-| Wrap-up | 21-23 | 5 min |
-| **Total** | | **~60 min** |
+| Wrap-up | 21-23 | 4 min |
+| **Total** | | **~65 min** |

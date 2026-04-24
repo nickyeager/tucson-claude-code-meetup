@@ -18,10 +18,11 @@ What we've built across 3 sessions:
 
 - `/plan-event` -- structured event planning
 - `/build-schedule` -- detailed schedule generation
-- `schedule-optimizer` -- subagent specialist
 - `/draft-announcement` -- communication drafts
-- Auto-review hook -- triggered on commit
+- `/draft-speaker-outreach` -- personalized speaker emails
+- `schedule-optimizer` -- subagent specialist
 - `comms-reviewer` -- communication quality subagent
+- Auto-review hook -- triggered on comms writes
 
 **Today:** parallel generation + learning from results
 
@@ -244,6 +245,7 @@ Our agent plans **great** events. But it doesn't remember what happened.
   "actualAttendees": 35,
   "estimatedAttendees": 40,
   "venueRating": 3,
+  "formatRating": 4.2,
   "feedbackHighlights": [
     "Lightning talks were the best part",
     "Loved the hands-on exercises"
@@ -311,7 +313,7 @@ for lessons learned. Apply them to venue, format, and schedule.
 | Session 4 | Self-improvement through feedback |
 
 **Final tally:**
-- 6 slash commands
+- 5 slash commands
 - 2 subagents
 - 1 hook
 - 1 feedback loop
@@ -348,7 +350,7 @@ for lessons learned. Apply them to venue, format, and schedule.
 
 ## Slide 20: BUILD TIME
 
-**Exercise:** [link to exercise]
+**Exercise:** `sessions/session-4/EXERCISE.md`
 
 **Goal:** Build competing variants, evaluate them, and close the feedback loop.
 
@@ -432,12 +434,12 @@ Better **context**, better **architecture**, better **feedback** >>>> smarter mo
 ## Slide 24: Thank You
 
 **Resources:**
-- [Claude Code Docs](https://docs.anthropic.com/en/docs/claude-code)
-- [Claude Agent SDK](https://docs.anthropic.com/en/docs/agent-sdk)
+- [Claude Code Docs](https://code.claude.com/docs)
+- [Claude Agent SDK](https://code.claude.com/docs/en/agent-sdk)
 - [ngrok AI Gateway](https://ngrok.com/docs/ai-gateway/)
 - [Context Engineering Best Practices](https://www.philschmid.de/context-engineering)
-- [Claude Code Best Practices](https://www.anthropic.com/engineering/claude-code-best-practices)
-- Course Repo: `github.com/nickyeager/tucson-claude-code-meetup`
+- [Claude Code Best Practices](https://code.claude.com/docs/en/best-practices)
+- Course Repo: [github.com/nickyeager/tucson-claude-code-meetup](https://github.com/nickyeager/tucson-claude-code-meetup)
 
 **Questions?**
 

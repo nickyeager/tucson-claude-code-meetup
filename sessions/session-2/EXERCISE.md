@@ -67,12 +67,13 @@ Build a communications and scheduling system for MeetupBot. The system should:
 - The /build-schedule command should output a markdown table AND a JSON file
 ```
 
-> **Where does `/generate-prp` come from?** It's a custom slash command defined in `.claude/commands/generate-prp.md`. You can find a ready-made version in this repo's `templates/.claude/commands/` folder. Copy it into your project's `.claude/commands/` directory before running Step 3:
+> **Where does `/generate-prp` come from?** It's a custom slash command defined in `.claude/commands/generate-prp.md`. You can find a ready-made version in the course repo's `templates/.claude/commands/` folder. Copy it into your project's `.claude/commands/` directory before running Step 3:
 > ```bash
 > mkdir -p .claude/commands
-> cp ../../templates/.claude/commands/generate-prp.md .claude/commands/
-> cp ../../templates/.claude/commands/execute-prp.md .claude/commands/
+> cp /path/to/course-repo/templates/.claude/commands/generate-prp.md .claude/commands/
+> cp /path/to/course-repo/templates/.claude/commands/execute-prp.md .claude/commands/
 > ```
+> Replace `/path/to/course-repo/` with the actual path where you cloned the course materials.
 > These commands tell Claude how to research your codebase, generate implementation blueprints, and execute them with validation gates.
 
 ## Step 3: Generate the PRP (10 min)
@@ -154,19 +155,23 @@ You should now have:
 
 If you're blocked or your output doesn't look right, compare your project against the reference implementation:
 
+In the course repo, the `solution/session-2/` directory has a complete reference implementation. Compare your files against it:
+
 ```bash
 # See what your project should look like after this session
-ls -R ../../solution/session-2/
+ls -R /path/to/course-repo/solution/session-2/
 
-# Compare a specific file
-diff your-file.md ../../solution/session-2/equivalent-file.md
+# Compare a specific file (adjust paths to your setup)
+diff INITIAL.md /path/to/course-repo/solution/session-2/INITIAL.md
 ```
 
 You can also copy the entire solution to catch up:
 ```bash
-cp -r ../../solution/session-2/* .
-cp -r ../../solution/session-2/.claude .
+cp -r /path/to/course-repo/solution/session-2/* .
+cp -r /path/to/course-repo/solution/session-2/.claude .
 ```
+
+> Replace `/path/to/course-repo/` with the actual path where you cloned the course materials.
 
 ## Bonus Challenges
 

@@ -1,6 +1,6 @@
 # Session 3 Speaker Script
 
-**Total time:** ~60 minutes (25 min instruction + 35 min exercise)
+**Total time:** ~70 minutes (30 min instruction + 35 min exercise + 5 min wrap)
 
 ---
 
@@ -87,7 +87,7 @@ tone, and suggest a better venue layout — all at once.
 
 "A subagent is just a markdown file in `.claude/agents/`. It has frontmatter — name, description, and the tools it's allowed to use. Then the body: instructions, expected input, output format, and rules."
 
-"Notice the tools list. This agent only gets Read and Glob. It can look at files but it can't write anything. That's intentional. A schedule optimizer shouldn't be modifying your comms folder."
+"Notice the tools list. This agent only gets Read, Grep, and Glob. It can look at files but it can't write anything. That's intentional. A schedule optimizer shouldn't be modifying your comms folder."
 
 "The output format is specified as JSON. This is how subagents talk back to the orchestrator — structured data, not prose."
 
@@ -162,7 +162,7 @@ Build the agent, then test it against the announcement from session 2.
 
 "Now hooks. If subagents are your specialists, hooks are your automation layer. Hooks are code that runs when things happen inside Claude Code."
 
-"Six hook events. PreToolUse fires before a tool executes — you could block dangerous operations or validate inputs. PostToolUse fires after — perfect for triggering reviews, logging, or notifications. UserPromptSubmit fires when the user sends a message — you could validate or transform input. Stop fires when the agent finishes responding — good for cleanup or summaries. And two new ones: CwdChanged fires when the working directory changes, and FileChanged fires when a file is modified."
+"Six hook events. PreToolUse fires before a tool executes — you could block dangerous operations or validate inputs. PostToolUse fires after — perfect for triggering reviews, logging, or notifications. UserPromptSubmit fires when the user sends a message — you could validate or transform input. Stop fires when the agent finishes responding — good for cleanup or summaries. SubagentStop fires when a subagent finishes — you can process its results. And Notification fires on system events."
 
 "Every hook receives JSON on stdin with the event details — tool name, file path, whatever the context is. Your script reads that JSON and decides what to do."
 
@@ -184,7 +184,7 @@ Build the agent, then test it against the announcement from session 2.
 ## Slide 15: Registering Hooks
 **Time: 1 min**
 
-"You register hooks in `.claude/settings.local.json`. PostToolUse event, matcher set to 'Write' — so it only fires on Write tool calls — and the command points to our script."
+"You register hooks in `.claude/settings.local.json`. PostToolUse event, matcher set to 'Write' — so it only fires on Write tool calls — and inside the hooks array, you specify the type as 'command' and point to your script."
 
 "The hook receives the full tool event as JSON on stdin. That's how the script knows what file was written and where."
 
@@ -230,7 +230,7 @@ Run through each step. Let students see the chain.
 ## Slide 19: BUILD TIME
 **Time: 35 min (exercise)**
 
-"Alright, build time. You've got 35 minutes. The exercise is in `class/session-3/EXERCISE.md`."
+"Alright, build time. You've got 35 minutes. The exercise is in `sessions/session-3/EXERCISE.md`."
 
 "Your goal: build specialist subagents that visibly outperform the monolith, plus an automated review hook. You saw me do it — now you build your own."
 

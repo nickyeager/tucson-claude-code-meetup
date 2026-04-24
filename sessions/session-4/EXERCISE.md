@@ -105,7 +105,7 @@ No generosity — if something is missing or weak, score it down:
 - comms/rag-workshop-v3-announcement.md
 ```
 
-**Key insight:** The evaluator agents have `denied_tools: Edit, Write, Bash` from Session 3 — they can critique but not fix. This separation of concerns (generator creates, evaluator judges) prevents the evaluator from silently "fixing" problems instead of surfacing them.
+**Key insight:** The evaluator agents only have read-only tools (`Read, Grep, Glob`) from Session 3 — they can critique but not fix. This separation of concerns (generator creates, evaluator judges) prevents the evaluator from silently "fixing" problems instead of surfacing them.
 
 Record the scores:
 
@@ -207,19 +207,23 @@ You should now have:
 
 If you're blocked or your output doesn't look right, compare your project against the reference implementation:
 
+In the course repo, the `solution/session-4/` directory has a complete reference implementation. Compare your files against it:
+
 ```bash
 # See what your project should look like after this session
-ls -R ../../solution/session-4/
+ls -R /path/to/course-repo/solution/session-4/
 
-# Compare a specific file
-diff your-file.md ../../solution/session-4/equivalent-file.md
+# Compare a specific file (adjust paths to your setup)
+diff .claude/commands/post-event.md /path/to/course-repo/solution/session-4/.claude/commands/post-event.md
 ```
 
 You can also copy the entire solution to catch up:
 ```bash
-cp -r ../../solution/session-4/* .
-cp -r ../../solution/session-4/.claude .
+cp -r /path/to/course-repo/solution/session-4/* .
+cp -r /path/to/course-repo/solution/session-4/.claude .
 ```
+
+> Replace `/path/to/course-repo/` with the actual path where you cloned the course materials.
 
 ## Bonus Challenges
 
