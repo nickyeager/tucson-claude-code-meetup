@@ -68,10 +68,21 @@ Create the project structure for MeetupBot:
 Follow the rules in CLAUDE.md.
 ```
 
-## Step 4: Connect to ngrok AI Gateway (10 min)
+## Step 4: Connect to an LLM Provider (10 min)
 
-Update `config/ngrok-gateway.json` with your actual credentials:
+Pick one of these options:
 
+### Option A: Direct Anthropic API key (recommended)
+```bash
+export ANTHROPIC_API_KEY=sk-ant-your-key-here
+```
+Sign up at [console.anthropic.com](https://console.anthropic.com) if you don't have a key.
+
+### Option B: Claude Max subscription
+If you have Claude Max, Claude Code detects it automatically — no config needed.
+
+### Option C: ngrok AI Gateway (free tier)
+Update `config/ngrok-gateway.json` with your credentials:
 ```json
 {
   "baseUrl": "https://your-gateway.ngrok.app/v1",
@@ -80,17 +91,9 @@ Update `config/ngrok-gateway.json` with your actual credentials:
   "fallbackModel": "gpt-4o-mini"
 }
 ```
+Sign up for a free account at [ngrok.com](https://ngrok.com).
 
-> **No ngrok account?** You can use a direct provider URL instead:
-> ```json
-> {
->   "baseUrl": "https://api.openai.com/v1",
->   "apiKey": "your-openai-key",
->   "defaultModel": "gpt-4o",
->   "fallbackModel": "gpt-4o-mini"
-> }
-> ```
-> The agent works identically — ngrok adds routing and failover on top.
+> All exercises work identically regardless of which provider you choose.
 
 ## Step 5: Build /plan-event (10 min)
 
@@ -165,7 +168,7 @@ You should now have:
 - [ ] CLAUDE.md with meetup agent rules and JSON schemas
 - [ ] `data/venues.json` with 5 sample venues
 - [ ] `data/speakers.json` with 8 sample speakers
-- [ ] `config/ngrok-gateway.json` configured
+- [ ] LLM provider connected (API key, Claude Max, or ngrok)
 - [ ] `.claude/commands/plan-event.md` working slash command
 - [ ] `examples/sample-event-plan.json` reference output
 - [ ] At least one generated event plan in `events/`

@@ -256,58 +256,65 @@ Claude Code asks before running commands. You can pre-configure trust.
 
 ---
 
-## Slide 12: ngrok AI Gateway — The Big Picture
+## Slide 12: Connecting to an LLM Provider
 
-# ngrok AI Gateway — The Big Picture
+# Connecting to an LLM Provider
 
-### The Problem:
-- Multiple AI providers = multiple API keys
-- No failover if one goes down
-- No visibility into costs or usage
-- PII leaking into prompts
+Claude Code needs an LLM to run. Three options:
 
-### The Solution:
-**One endpoint. Multiple providers.**
+| Option | Setup | Cost |
+|--------|-------|------|
+| **Claude Max** | Already logged in — no config needed | $100/mo subscription |
+| **Anthropic API** | Set `ANTHROPIC_API_KEY` env var | Pay per token |
+| **ngrok AI Gateway** | One endpoint, multiple providers, failover | Free tier available |
+
+### Simplest path (Anthropic API):
+```bash
+export ANTHROPIC_API_KEY=sk-ant-your-key-here
+```
+
+### If you have Claude Max:
+```bash
+# Nothing to configure — Claude Code detects your subscription
+```
+
+All exercises work identically regardless of which option you choose.
+
+---
+
+## Slide 13: ngrok AI Gateway (Optional)
+
+# ngrok AI Gateway — Optional
+
+If you want multi-provider routing, failover, or cost optimization:
+
+- **One API key** for Anthropic, OpenAI, Google
+- **Automatic failover** if a provider goes down
+- **Cost routing** — `ngrok/auto` picks the cheapest model
+- **PII redaction** — strips sensitive data before it hits the model
+- **Free tier** available at ngrok.com
 
 ```
 Your App  --->  ngrok AI Gateway  --->  Anthropic
                                   --->  OpenAI
                                   --->  Google
-                                  --->  Ollama (local)
 ```
 
-Single API key. Automatic routing. Full observability.
+> ngrok was originally going to sponsor this series with gateway credits. That didn't come together, so we're using the free tier. Works fine for what we're doing.
 
 ---
 
-## Slide 13: ngrok AI Gateway — Key Features
+## Slide 14: Provider Setup
 
-# ngrok AI Gateway — Key Features
+# Provider Setup
 
-- **One API key** — single credential for all providers
-- **Failover** — if Anthropic is down, route to OpenAI automatically
-- **Cost routing** — `ngrok/auto` picks the cheapest provider for the task
-- **PII redaction** — strip sensitive data before it hits the model
-- **SDK compatible** — drop-in replacement, no code changes needed
-
-```
-# Instead of:
-ANTHROPIC_API_KEY=sk-ant-...
-OPENAI_API_KEY=sk-...
-
-# Just:
-NGROK_API_KEY=ngrok-...
-NGROK_AI_GATEWAY_URL=https://your-gateway.ngrok.app
+### Option A: Direct Anthropic API (recommended for today)
+```bash
+export ANTHROPIC_API_KEY=sk-ant-your-key-here
 ```
 
----
-
-## Slide 14: Setting Up ngrok Gateway
-
-# Setting Up ngrok Gateway
-
+### Option B: ngrok AI Gateway
 **File:** `config/ngrok-gateway.json`
-
 ```json
 {
   "baseUrl": "https://your-gateway.ngrok.app/v1",
@@ -317,15 +324,7 @@ NGROK_AI_GATEWAY_URL=https://your-gateway.ngrok.app
 }
 ```
 
-### Three options (see `sessions/SETUP-GUIDE.md`):
-
-| Option | Setup |
-|--------|-------|
-| **ngrok AI Gateway** | One endpoint, failover, cost routing |
-| **Direct OpenAI** | Simplest — just need an API key |
-| **Direct Anthropic** | Native Claude models |
-
-All exercises work identically regardless of choice.
+See `sessions/SETUP-GUIDE.md` for detailed instructions.
 
 **LIVE DEMO**
 
@@ -482,7 +481,7 @@ Raise your hand if you get stuck. Help your neighbor first.
 - [ ] Git repo initialized with commits
 - [ ] `CLAUDE.md` at project root with output rules
 - [ ] Project structure with `data/` directory
-- [ ] ngrok AI Gateway configured (or fallback)
+- [ ] LLM provider connected (API key, Claude Max, or ngrok)
 - [ ] `/plan-event` slash command working
 - [ ] At least one event plan saved as JSON
 

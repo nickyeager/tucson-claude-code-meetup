@@ -165,42 +165,46 @@ claude
 
 ---
 
-## Slide 12: ngrok AI Gateway — The Big Picture
+## Slide 12: Connecting to an LLM Provider
 **Time: 2 min**
 
-"Here's the problem. You want to use Anthropic. Maybe you also want OpenAI as a fallback. Maybe Google for something else. That's three API keys, three billing accounts, three sets of rate limits. It's a mess."
+"Claude Code needs an LLM behind it. You've got three options."
 
-"ngrok AI Gateway solves this. One endpoint, one API key, multiple providers behind it. Your app talks to the gateway. The gateway talks to the providers."
+"Simplest: if you have a Claude Max subscription, you're already set. Claude Code detects it automatically — no API key, no config."
 
-"Think of it like a reverse proxy for AI. Same idea as putting nginx in front of your web servers, but for language models."
+"Second option: direct Anthropic API key. Sign up at console.anthropic.com, get a key, set the environment variable. Pay per token. This is what I'd recommend for today — it's straightforward and you're in full control."
 
-[PAUSE] "Quick note — ngrok is actually sponsoring this meetup series, which is awesome. They're giving everyone gateway access today."
+"Third option: ngrok AI Gateway. This is a routing layer — one endpoint, multiple providers behind it. It gives you failover, cost-based routing, PII redaction. The free tier works fine."
 
-**Transition:** "Let me show you what it can actually do."
+"Quick backstory — ngrok was originally going to sponsor this series with gateway credits for everyone. That didn't come together, so we're using direct API keys as the default. If you want to try the gateway on the free tier, the setup guide covers it."
+
+**Transition:** "Let me show you the ngrok option briefly, then we'll set up."
 
 ---
 
-## Slide 13: ngrok AI Gateway — Key Features
+## Slide 13: ngrok AI Gateway (Optional)
 **Time: 1 min**
 
-"The headline features: one API key for everything, automatic failover if a provider goes down, cost-based routing — it can pick the cheapest model for a task — and PII redaction, which strips sensitive data before it leaves your network."
+"ngrok AI Gateway is worth knowing about even if you don't use it today. It's a reverse proxy for AI — same concept as putting nginx in front of your web servers, but for language models."
 
-"And the best part — it's SDK compatible. You don't change your code. You change the base URL. That's it."
+"One API key for Anthropic, OpenAI, Google. Automatic failover. Cost routing that picks the cheapest model for a task. And PII redaction — strips sensitive data before it leaves your network."
 
-**Transition:** "Let me show you the setup."
+"Free tier is available at ngrok.com. We won't require it for any exercises, but it's a good tool to have in your belt for production use."
+
+**Transition:** "Let's get you connected."
 
 ---
 
-## Slide 14: Setting Up ngrok Gateway
+## Slide 14: Provider Setup
 **Time: 2 min**
 
-[DEMO] Show the config file:
-1. Create `config/ngrok-gateway.json`
-2. Walk through each field — baseUrl, apiKey, defaultModel, fallbackModel
-3. Show how to set `ANTHROPIC_BASE_URL` environment variable to point at the gateway
-4. "If the gateway isn't working for you, no worries. The setup guide in the repo has three options — ngrok, direct OpenAI, or direct Anthropic. All exercises work identically. Just swap the base URL in your config file."
+[DEMO] Show both options:
+1. "For most of you, this is it:" `export ANTHROPIC_API_KEY=sk-ant-your-key-here`
+2. For ngrok users: create `config/ngrok-gateway.json`, walk through fields
+3. "If you have Claude Max, you don't need to do anything. Claude Code picks it up."
+4. "The setup guide in the repo has step-by-step instructions for all three options."
 
-**Tip for common questions:** "If someone asks about latency — the gateway adds minimal overhead. We're talking single-digit milliseconds for routing. The model inference time dwarfs it."
+**Tip for common questions:** "If someone asks 'which should I use?' — direct Anthropic API key is the easiest for today. Claude Max if you already have it. ngrok if you want multi-provider routing."
 
 **Transition:** "Alright, now for the payoff. Slash commands."
 

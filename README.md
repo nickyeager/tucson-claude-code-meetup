@@ -15,7 +15,7 @@ A hands-on, 4-session course where you build **MeetupBot** — an AI-powered age
 - Node.js installed (v18+)
 - Git installed (we'll cover the basics)
 - Text editor (VS Code recommended — has a Claude Code extension!)
-- ngrok account with AI Gateway access (or a direct LLM provider API key as fallback)
+- An LLM provider: Anthropic API key, Claude Max subscription, or ngrok AI Gateway (free tier)
 
 > **Claude Code runs everywhere:** CLI (terminal), Desktop app (Mac/Windows), Web (`claude.ai/code`), VS Code extension, and JetBrains plugin. We use the CLI in this course, but all features work across all surfaces.
 
@@ -165,15 +165,19 @@ Each session builds directly on the previous one:
 - **Session 2 → 3**: Your monolithic agent works, but it does everything mediocrely. Session 3 breaks it into specialists that each do one thing well — and wires hooks to automate quality checks you'd otherwise forget.
 - **Session 3 → 4**: With specialists in place, you can now run them in parallel to generate competing solutions, evaluate objectively, and build a feedback loop that makes every future event better.
 
-## ngrok AI Gateway
+## LLM Provider Options
 
-This course uses ngrok AI Gateway to route LLM calls to multiple providers through a single endpoint. Benefits:
-- **One endpoint** — no managing separate API keys for OpenAI, Anthropic, Google
-- **Automatic failover** — if one provider is down, the gateway tries the next
-- **Cost routing** — `ngrok/auto` picks the cheapest capable model
-- **PII redaction** — protect attendee data in LLM calls
+Claude Code needs an LLM provider. Pick whichever works for you — all exercises work identically:
 
-**Don't have ngrok access?** Every exercise works with a direct provider URL too. Just set your `config/ngrok-gateway.json` to point at OpenAI or Anthropic directly. The agent patterns are identical.
+| Option | Setup | Best For |
+|--------|-------|----------|
+| **Anthropic API** | `export ANTHROPIC_API_KEY=sk-ant-...` | Direct control, pay per token |
+| **Claude Max** | Already logged in — auto-detected | Subscription users, zero config |
+| **ngrok AI Gateway** | Free tier at ngrok.com, config in `config/ngrok-gateway.json` | Multi-provider routing, failover |
+
+**Recommended for this course:** Direct Anthropic API key. It's the simplest setup and gives you full control.
+
+ngrok AI Gateway is covered as an optional topic in Session 1 — it's useful for production setups where you want failover, cost routing, or PII redaction across multiple providers.
 
 ## Resources
 
