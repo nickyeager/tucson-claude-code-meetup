@@ -7,7 +7,9 @@ Total time: ~65 minutes (30 min instruction, 30 min exercise, 5 min wrap-up)
 ## Slide 1: Title
 **Time: 1 min**
 
-"Hey everyone, welcome to the Tucson Claude Code Meetup. I'm Nick Yeager, and today we're doing something fun — we're going to build an AI agent feature from scratch. Not a toy demo. An actual slash command that generates structured event plans. By the end of tonight, you'll have something working on your machine."
+"Hey everyone, welcome to the Tucson Claude Code Meetup. I'm Nick Yeager — I build developer tools, and I've been deep in Claude Code for the past year building agents for my own projects. I organized this series because I kept finding patterns that worked really well and wanted to share them with other builders here in Tucson."
+
+"Tonight we're doing something fun — we're going to build an AI agent feature from scratch. Not a toy demo. An actual slash command that generates structured event plans. By the end of tonight, you'll have something working on your machine."
 
 "This is Session 1 of four. Each session builds on the last, so by Session 4 you'll have a full agent with subagents, hooks, and a feedback loop. But tonight — fundamentals. Let's get into it."
 
