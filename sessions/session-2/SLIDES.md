@@ -12,6 +12,8 @@
 
 **Nick Yeager** — AI Solutions Architect / nickcyeager.com
 
+Tucson Claude Code Meetup | `github.com/ai-trailblazers/tucson-claude-code-meetup`
+
 ---
 
 ## Slide 2: Recap — Where We Left Off
@@ -58,7 +60,34 @@ The AI was smart enough. It just didn't have the right information.
 
 ---
 
-## Slide 5: Prompt Engineering vs. Context Engineering
+## Slide 5: You've Already Seen This Problem
+
+# You've Already Seen This Problem
+
+### "Design Slop" — what AI output looks like without context
+
+A recent analysis of 500 Show HN sites found **67% used 2+ identical AI design patterns**:
+
+| Pattern | What It Looks Like |
+|---|---|
+| Inter font, centered hero | Every site has the same headline layout |
+| "VibeCode Purple" palette | Same gradient, same dark mode, same grey text |
+| shadcn/ui cards with icon tops | Identical feature grids, numbered steps |
+| Uppercase badges above headings | `✨ INTRODUCING` on every landing page |
+| Glassmorphism + gradient shadows | Same blurry card effect, everywhere |
+
+**These sites aren't bad.** They're just *identical*.
+
+The AI wasn't broken — it had **no examples, no brand, no constraints**. So it fell back to the most common patterns in its training data.
+
+**This is exactly what happens to agent output.**
+No context = generic event plans, generic emails, generic schedules.
+
+> Source: Adrian Krebs, ["Design Slop"](https://www.adriankrebs.ch/blog/design-slop/) — scoring AI design markers across Show HN submissions
+
+---
+
+## Slide 6: Prompt Engineering vs. Context Engineering
 
 | | Prompt Engineering | Context Engineering |
 |---|---|---|
@@ -73,7 +102,7 @@ The AI was smart enough. It just didn't have the right information.
 
 ---
 
-## Slide 6: LIVE DEMO — The Difference
+## Slide 7: LIVE DEMO — The Difference
 
 **Same task, two approaches:**
 
@@ -97,7 +126,7 @@ Watch the quality difference.
 
 ---
 
-## Slide 7: The Context Engineering Stack
+## Slide 8: The Context Engineering Stack
 
 ```
 Layer                  Purpose
@@ -116,7 +145,7 @@ Think of it as building a briefing packet, not writing a prompt.
 
 ---
 
-## Slide 8: INITIAL.md — The Feature Request
+## Slide 9: INITIAL.md — The Feature Request
 
 A structured feature request with four sections:
 
@@ -140,7 +169,7 @@ This replaces vague Slack messages with an engineering spec.
 
 ---
 
-## Slide 9: Good vs. Bad Feature Requests
+## Slide 10: Good vs. Bad Feature Requests
 
 **Bad:**
 ```
@@ -166,7 +195,7 @@ availability from data/speakers.json, adds breaks every
 
 ---
 
-## Slide 10: PRPs — Implementation Blueprints
+## Slide 11: PRPs — Implementation Blueprints
 
 **PRP = Product Requirements Prompt**
 
@@ -185,7 +214,7 @@ You write the WHAT. The PRP figures out the HOW.
 
 ---
 
-## Slide 11: The PRP Workflow
+## Slide 12: The PRP Workflow
 
 ```
 INITIAL.md  -->  /generate-prp  -->  PRPs/meetup-comms.md  -->  /execute-prp  -->  Working code
@@ -205,7 +234,7 @@ INITIAL.md  -->  /generate-prp  -->  PRPs/meetup-comms.md  -->  /execute-prp  --
 
 ---
 
-## Slide 12: LIVE DEMO — /generate-prp
+## Slide 13: LIVE DEMO — /generate-prp
 
 **Run:** `/generate-prp INITIAL.md`
 
@@ -223,7 +252,7 @@ Watch Claude:
 
 ---
 
-## Slide 13: LIVE DEMO — /execute-prp
+## Slide 14: LIVE DEMO — /execute-prp
 
 **Run:** `/execute-prp PRPs/meetup-comms.md`
 
@@ -238,7 +267,7 @@ Watch Claude:
 
 ---
 
-## Slide 14: The Examples/ Folder Trick
+## Slide 15: The Examples/ Folder Trick
 
 **More examples = dramatically better output.**
 
@@ -257,11 +286,11 @@ The AI pattern-matches against your examples.
 
 **Show it. Don't describe it.**
 
-This is why `examples/sample-event-plan.json` exists in your repo.
+Remember the design slop sites? They all look the same because the AI had **zero examples** to differentiate against. Your `examples/` folder is the fix.
 
 ---
 
-## Slide 15: Composable Slash Commands
+## Slide 16: Composable Slash Commands
 
 Commands that feed into each other:
 
@@ -285,7 +314,7 @@ Each command reads **structured data** from the previous one.
 
 ---
 
-## Slide 16: $ARGUMENTS in Slash Commands
+## Slide 17: $ARGUMENTS in Slash Commands
 
 ```markdown
 # .claude/commands/build-schedule.md
@@ -311,7 +340,7 @@ This is how you make commands reusable across different events.
 
 ---
 
-## Slide 17: Tips & Gotchas
+## Slide 18: Tips & Gotchas
 
 | | Tip |
 |---|---|
@@ -326,7 +355,7 @@ This is how you make commands reusable across different events.
 
 ---
 
-## Slide 18: BUILD TIME
+## Slide 19: BUILD TIME
 
 ### Exercise: Build the Comms & Scheduling System via PRP
 
@@ -348,7 +377,7 @@ Raise your hand if you get stuck on INITIAL.md — that's the hardest part.
 
 ---
 
-## Slide 19: Checkpoint
+## Slide 20: Checkpoint
 
 You should have:
 
@@ -366,7 +395,7 @@ You should have:
 
 ---
 
-## Slide 20: What's Next — Session 3
+## Slide 21: What's Next — Session 3
 
 ### Subagents & Hooks: Specialists Beat Generalists
 
@@ -380,7 +409,7 @@ Right now, one agent does everything. Next session:
 
 ---
 
-## Slide 21: Session 2 Recap
+## Slide 22: Session 2 Recap
 
 ### Three things to remember:
 

@@ -12,6 +12,8 @@
 
 **Nick Yeager** — AI Solutions Architect / nickcyeager.com
 
+Tucson Claude Code Meetup | `github.com/ai-trailblazers/tucson-claude-code-meetup`
+
 ---
 
 ## Slide 2: Recap -- The Full System So Far
