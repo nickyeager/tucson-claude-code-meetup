@@ -63,9 +63,18 @@ Verify: `claude --version`
 
 ### 4. Set Up Your LLM Provider
 
-You need an API key to use Claude Code's slash commands with external LLMs. Choose ONE of the options below.
+You need an LLM provider to use Claude Code. Choose ONE of the options below.
 
-### Option A: ngrok AI Gateway (Recommended)
+### Option A: Claude Code Max (Recommended)
+
+The simplest option — a subscription plan that works automatically with Claude Code.
+
+1. **Sign up for Claude Code Max** at https://claude.ai
+2. **Log in** via `claude` in your terminal — it will detect your subscription automatically
+
+No API key needed. No config files. Claude Code just works.
+
+### Option B: ngrok AI Gateway
 
 ngrok AI Gateway gives you one endpoint that routes to multiple LLM providers with automatic failover and cost optimization.
 
@@ -89,7 +98,7 @@ Your config file will look like:
 
 **Note:** ngrok AI Gateway is a separate product from ngrok tunnels. You specifically need the "AI Gateway" feature, not a regular tunnel.
 
-### Option B: Direct OpenAI API (Simplest Fallback)
+### Option C: Direct OpenAI API
 
 If you don't have ngrok AI Gateway, use OpenAI directly:
 
@@ -107,7 +116,7 @@ Your config file will look like:
 }
 ```
 
-### Option C: Direct Anthropic API
+### Option D: Direct Anthropic API
 
 1. **Create an Anthropic account** at https://console.anthropic.com/
 2. **Generate an API key** at https://console.anthropic.com/settings/keys
@@ -127,11 +136,12 @@ Your config file will look like:
 
 | Option | Pros | Cons |
 |--------|------|------|
+| Claude Code Max | Zero config, no API keys, just works | Subscription plan |
 | ngrok AI Gateway | Failover, cost routing, PII redaction, one key for all providers | Requires ngrok setup |
-| Direct OpenAI | Simplest setup, most common | Single provider, no failover |
-| Direct Anthropic | Native Claude models | Single provider, no failover |
+| Direct OpenAI | Common, pay per token | Single provider, no failover |
+| Direct Anthropic | Native Claude models, pay per token | Single provider, no failover |
 
-**All exercises work identically regardless of which option you choose.** The agent patterns are the same — only the base URL and API key differ.
+**All exercises work identically regardless of which option you choose.** The agent patterns are the same — only the provider setup differs.
 
 ### 5. Choose a Text Editor
 
@@ -148,8 +158,8 @@ Install the "Claude Code" extension for a better experience (optional).
 - Check your PATH includes the install location
 
 **"API key not found" or authentication errors**
-- Claude Code uses your Anthropic API key by default
-- Set it with: `export ANTHROPIC_API_KEY=your-key`
+- If using Claude Code Max: make sure you're logged in via `claude` — it detects your subscription
+- If using an API key: `export ANTHROPIC_API_KEY=your-key`
 - Or configure in Claude Code settings
 
 **"Permission denied" on macOS**

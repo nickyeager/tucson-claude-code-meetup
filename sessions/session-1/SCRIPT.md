@@ -183,13 +183,13 @@ claude
 
 "Claude Code needs an LLM behind it. You've got three options."
 
-"Simplest: if you have a Claude Max subscription, you're already set. Claude Code detects it automatically — no API key, no config."
+"Simplest and recommended: Claude Code Max. It's a subscription plan — you log in, Claude Code detects it automatically. No API key, no config, no token counting. This is what I'd recommend for today."
 
-"Second option: direct Anthropic API key. Sign up at console.anthropic.com, get a key, set the environment variable. Pay per token. This is what I'd recommend for today — it's straightforward and you're in full control."
+"Second option: direct Anthropic API key. Sign up at console.anthropic.com, get a key, set the environment variable. Pay per token. Good if you want fine-grained cost control."
 
 "Third option: ngrok AI Gateway. This is a routing layer — one endpoint, multiple providers behind it. It gives you failover, cost-based routing, PII redaction. The free tier works fine."
 
-"Quick backstory — ngrok was originally going to sponsor this series with gateway credits for everyone. That didn't come together, so we're using direct API keys as the default. If you want to try the gateway on the free tier, the setup guide covers it."
+"For today, Claude Code Max is the easiest path. If you don't have it, a direct API key works great too. The setup guide in the repo covers all three options."
 
 **Transition:** "Let me show you the ngrok option briefly, then we'll set up."
 
@@ -202,7 +202,7 @@ claude
 
 "One API key for Anthropic, OpenAI, Google. Automatic failover. Cost routing that picks the cheapest model for a task. PII redaction that strips sensitive data before it leaves your network."
 
-"Quick backstory — ngrok was originally going to sponsor this series with gateway credits for everyone. That didn't come together, so we're using direct API keys as the default today. The ngrok free tier still works fine if you want to try it."
+"Quick backstory — ngrok was originally going to sponsor this series with gateway credits for everyone. That didn't come together, so we're recommending Claude Code Max as the default today. The ngrok free tier still works fine if you want to try it."
 
 **Transition:** "ngrok isn't the only gateway out there. Quick landscape overview."
 
@@ -224,13 +224,13 @@ claude
 ## Slide 16: Provider Setup
 **Time: 2 min**
 
-[DEMO] Show both options:
-1. "For most of you, this is it:" `export ANTHROPIC_API_KEY=sk-ant-your-key-here`
-2. For ngrok users: create `config/ngrok-gateway.json`, walk through fields
-3. "If you have Claude Max, you don't need to do anything. Claude Code picks it up."
+[DEMO] Show the options:
+1. "If you have Claude Code Max, you're already set — Claude Code detects your subscription automatically."
+2. "For API key users:" `export ANTHROPIC_API_KEY=sk-ant-your-key-here`
+3. For ngrok users: create `config/ngrok-gateway.json`, walk through fields
 4. "The setup guide in the repo has step-by-step instructions for all three options."
 
-**Tip for common questions:** "If someone asks 'which should I use?' — direct Anthropic API key is the easiest for today. Claude Max if you already have it. ngrok if you want multi-provider routing."
+**Tip for common questions:** "If someone asks 'which should I use?' — Claude Code Max is the easiest. Direct API key if you want pay-per-token control. ngrok if you want multi-provider routing."
 
 **Transition:** "Alright, now for the payoff. Slash commands."
 

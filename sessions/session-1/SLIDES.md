@@ -102,7 +102,7 @@ claude
 ### Requirements:
 - Node.js 18+
 - Git
-- Anthropic API key (or ngrok AI Gateway)
+- Claude Code Max subscription (or Anthropic API key / ngrok AI Gateway)
 
 > See `sessions/SETUP-GUIDE.md` for detailed install instructions + LLM provider options
 
@@ -289,18 +289,18 @@ Claude Code needs an LLM to run. Three options for today:
 
 | Option | Setup | Cost |
 |--------|-------|------|
-| **Claude Max** | Already logged in — no config needed | $100/mo subscription |
+| **Claude Code Max** | Already logged in — no config needed | Subscription plan |
 | **Anthropic API** | Set `ANTHROPIC_API_KEY` env var | Pay per token |
 | **ngrok AI Gateway** | One endpoint, multiple providers, failover | Free tier available |
 
-### Simplest path (Anthropic API):
-```bash
-export ANTHROPIC_API_KEY=sk-ant-your-key-here
-```
-
-### If you have Claude Max:
+### Simplest path (Claude Code Max):
 ```bash
 # Nothing to configure — Claude Code detects your subscription
+```
+
+### If using Anthropic API:
+```bash
+export ANTHROPIC_API_KEY=sk-ant-your-key-here
 ```
 
 All exercises work identically regardless of which option you choose.
@@ -350,12 +350,17 @@ ngrok is one of several AI gateways worth knowing about:
 
 # Provider Setup
 
-### Option A: Direct Anthropic API (recommended for today)
+### Option A: Claude Code Max (recommended for today)
+```bash
+# Nothing to configure — Claude Code detects your subscription
+```
+
+### Option B: Direct Anthropic API
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-your-key-here
 ```
 
-### Option B: ngrok AI Gateway
+### Option C: ngrok AI Gateway
 **File:** `config/ngrok-gateway.json`
 ```json
 {
@@ -491,6 +496,7 @@ If everything is `IMPORTANT`, nothing is. Reserve these for rules that **truly m
 - Write vague rules like "be good at coding"
 - Forget to commit before experimenting
 - Skip the `CLAUDE.md` — it's the foundation of everything
+- Accept the first generic output — without constraints, AI falls back to the same patterns every time (we'll see this in Session 2 as "design slop")
 
 ---
 

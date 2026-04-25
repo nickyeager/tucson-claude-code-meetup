@@ -72,14 +72,14 @@ Follow the rules in CLAUDE.md.
 
 Pick one of these options:
 
-### Option A: Direct Anthropic API key (recommended)
+### Option A: Claude Code Max (recommended)
+If you have Claude Code Max, Claude Code detects it automatically — no API key, no config needed.
+
+### Option B: Direct Anthropic API key
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-your-key-here
 ```
 Sign up at [console.anthropic.com](https://console.anthropic.com) if you don't have a key.
-
-### Option B: Claude Max subscription
-If you have Claude Max, Claude Code detects it automatically — no config needed.
 
 ### Option C: ngrok AI Gateway (free tier)
 Update `config/ngrok-gateway.json` with your credentials:
