@@ -85,8 +85,8 @@ Powered by **Claude Opus 4.7** — 1M token context window. Not a chatbot. A **c
 # Installation
 
 ```bash
-# Install Claude Code globally
-npm install -g @anthropic-ai/claude-code
+# Install Claude Code
+curl -fsSL https://claude.ai/install.sh | bash
 
 # Create your project
 mkdir meetup-agent
@@ -350,6 +350,7 @@ Custom workflows that live in your project.
 - Files in `.claude/commands/` become slash commands
 - Use `$ARGUMENTS` to capture user input
 - They're just markdown — prompts with structure
+- **Note:** Claude Code also supports `.claude/skills/` with richer features (frontmatter, named args) — commands are the simpler starting point
 
 ```bash
 # Usage in Claude Code:
@@ -429,7 +430,7 @@ If everything is `IMPORTANT`, nothing is. Reserve these for rules that **truly m
 
 ### Speed & effort controls:
 - `/fast` — toggle fast mode (same model, faster output)
-- `/effort low|medium|high` — control reasoning depth
+- `/effort low|medium|high|max` — control reasoning depth
 - "think hard" or "ultrathink" in a prompt — deeper reasoning for one turn
 
 ---

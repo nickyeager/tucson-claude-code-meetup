@@ -179,7 +179,7 @@ chmod +x .claude/hooks/auto-review.sh
 >
 > **Conditional hooks (new):** You can make hooks more targeted with an `if` field. For example, to only fire on git commits: `"if": "Bash(git commit *)"`. This prevents the hook from firing on every Bash call.
 >
-> **More hook events:** Beyond the four above, Claude Code also supports `SubagentStop` (when a subagent finishes) and `Notification` (system notifications).
+> **More hook events:** Beyond the four above, Claude Code also supports `SubagentStop` (when a subagent finishes), `Notification` (system notifications), `CwdChanged` (working directory changes), and `FileChanged` (file modifications). See the docs for the full list.
 
 Register the hook in `.claude/settings.local.json`:
 

@@ -48,8 +48,15 @@ Verify: `git --version`
 
 ### 3. Install Claude Code
 
+**macOS/Linux:**
 ```bash
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+**Alternative methods:**
+```bash
+npm install -g @anthropic-ai/claude-code   # via npm
+brew install claude-code                    # via Homebrew (macOS)
 ```
 
 Verify: `claude --version`
@@ -136,8 +143,9 @@ Install the "Claude Code" extension for a better experience (optional).
 
 **"command not found: claude"**
 - Make sure Node.js is v18+: `node --version`
-- Try reinstalling: `npm install -g @anthropic-ai/claude-code`
-- Check your PATH includes npm global bin: `npm bin -g`
+- Try reinstalling: `curl -fsSL https://claude.ai/install.sh | bash`
+- Or via npm: `npm install -g @anthropic-ai/claude-code`
+- Check your PATH includes the install location
 
 **"API key not found" or authentication errors**
 - Claude Code uses your Anthropic API key by default
@@ -145,5 +153,5 @@ Install the "Claude Code" extension for a better experience (optional).
 - Or configure in Claude Code settings
 
 **"Permission denied" on macOS**
-- Use `sudo npm install -g @anthropic-ai/claude-code`
-- Or fix npm permissions: https://docs.npmjs.com/resolving-eacces-permissions-errors
+- The curl installer doesn't require sudo
+- If using npm: `sudo npm install -g @anthropic-ai/claude-code`

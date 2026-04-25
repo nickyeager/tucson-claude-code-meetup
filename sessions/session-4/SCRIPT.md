@@ -296,7 +296,7 @@ If you got through all five, that's the full system. If you got through three or
 
 So where do you go from here?
 
-First — Routines. This is brand new. Claude Code now has cloud-based automations that run without your laptop. You define a prompt, connect a repo, and set a trigger. Scheduled cadences — 'every Monday, suggest this week's meetup topic.' GitHub events — 'when a PR is opened, review the changes.' API calls — 'when our RSVP webhook fires, update the attendee estimate.' Pro plan gets 5 per day, Max gets 15. It's the natural next step for MeetupBot — automate the feedback loop on a schedule.
+First — Routines. This is brand new. Claude Code now has cloud-based automations that run without your laptop. You define a prompt, connect a repo, and set a trigger. Scheduled cadences — 'every Monday, suggest this week's meetup topic.' GitHub events — 'when a PR is opened, review the changes.' API calls — 'when our RSVP webhook fires, update the attendee estimate.' Available on Max, Team, and Enterprise plans with daily limits. It's the natural next step for MeetupBot — automate the feedback loop on a schedule.
 
 Second — the Claude Agent SDK. Formerly called the Claude Code SDK, it's available in Python and TypeScript. It lets you embed everything you've learned — subagents, tool permissions, hooks — into your own applications. `pip install claude-agent-sdk` or `npm install @anthropic-ai/claude-agent-sdk`.
 

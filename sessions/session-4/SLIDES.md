@@ -387,7 +387,7 @@ By now you should have:
 | **GitHub event** | "When a PR opens, review event plan changes" |
 | **API call** | "When RSVP webhook fires, update attendee estimate" |
 
-Available on Pro (5/day), Max (15/day), Team/Enterprise (25/day).
+Available on Max, Team, and Enterprise plans (daily limits vary by plan).
 
 ### Claude Agent SDK — embed agents in your apps
 

@@ -37,7 +37,7 @@ If any command fails, install the missing tool before Session 1. Claude Code req
 
 ```bash
 # 1. Install Claude Code
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 
 # 2. Create your project (you'll do this in Session 1)
 mkdir meetup-agent && cd meetup-agent

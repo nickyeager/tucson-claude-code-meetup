@@ -7,7 +7,7 @@ Create a new repo from scratch, set up Claude Code with a CLAUDE.md, connect to 
 
 ```bash
 # Install Claude Code
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 
 # Create your project from scratch
 mkdir meetup-agent && cd meetup-agent
@@ -198,4 +198,4 @@ cp -r /path/to/course-repo/solution/session-1/.claude .
 2. Try the `IMPORTANT` keyword in your CLAUDE.md and see how it changes the agent's behavior
 3. Generate 3 event plans and compare — is the JSON schema consistent? If not, tighten your CLAUDE.md rules
 4. Try `/fast` to toggle fast mode (same model, faster output) and compare the experience
-5. Experiment with effort levels: type `/effort low` for quick tasks and `/effort high` for complex reasoning
+5. Experiment with effort levels: `/effort low` for quick tasks, `/effort high` for complex reasoning, `/effort max` for deepest analysis

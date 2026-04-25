@@ -57,21 +57,21 @@ Total time: ~65 minutes (30 min instruction, 30 min exercise, 5 min wrap-up)
 ## Slide 5: Installation
 **Time: 3 min**
 
-"Installation is one line. npm install, global flag, done."
+"Installation is one line. Curl the installer, done."
 
 [DEMO] Open terminal. Run:
 ```
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 mkdir meetup-agent && cd meetup-agent
 git init
 claude
 ```
 
-"That's it. Four commands and you're in Claude Code. You'll see it scan your project — right now it's empty, so there's not much to scan."
+"That's it. Four commands and you're in Claude Code. You can also install via `npm install -g @anthropic-ai/claude-code` or `brew install claude-code` if you prefer. You'll see it scan your project — right now it's empty, so there's not much to scan."
 
 [PAUSE] "If you're following along and hit an issue with npm, make sure you're on Node 18 or higher. Run `node --version` to check. There's a full setup guide in the repo at `sessions/SETUP-GUIDE.md` with install instructions for every platform. If you're stuck, flag me down during build time."
 
-**Tip for common questions:** "If someone asks about Homebrew installation — yes, `brew install claude-code` works too. npm is just the universal path."
+**Tip for common questions:** "If someone asks about npm — yes, `npm install -g @anthropic-ai/claude-code` works too. The curl installer is just the quickest path."
 
 **Transition:** "Before we do anything in Claude Code, let's make sure you know the one git skill that matters."
 
@@ -258,7 +258,7 @@ claude
 
 "For us, 'always return JSON' is an IMPORTANT rule. 'Use a friendly tone' is not."
 
-"One more thing — speed and effort controls. Type `/fast` to toggle fast mode — same model, faster output. Type `/effort low` for quick tasks or `/effort high` for complex reasoning. You can even say 'think hard' or 'ultrathink' in a prompt to trigger deeper reasoning for one turn. These are good to know but don't overthink them tonight."
+"One more thing — speed and effort controls. Type `/fast` to toggle fast mode — same model, faster output. Type `/effort low` for quick tasks, `/effort high` for complex reasoning, or `/effort max` for the deepest analysis. You can even say 'think hard' or 'ultrathink' in a prompt to trigger deeper reasoning for one turn. These are good to know but don't overthink them tonight."
 
 **Transition:** "A few more tips before I set you loose."
 

@@ -11,7 +11,7 @@ Complete these **before** your first dry run.
 ### Environment Setup
 - [ ] Node.js 18+ installed: `node --version`
 - [ ] Git installed: `git --version`
-- [ ] Claude Code installed and updated: `npm install -g @anthropic-ai/claude-code && claude --version`
+- [ ] Claude Code installed and updated: `curl -fsSL https://claude.ai/install.sh | bash && claude --version`
 - [ ] Anthropic API key set: `export ANTHROPIC_API_KEY=...` (or ngrok AI Gateway configured)
 - [ ] VS Code with Claude Code extension (optional but recommended for showing the IDE surface)
 - [ ] Terminal with readable font size for projection (16pt+ recommended)
