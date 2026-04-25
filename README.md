@@ -2,6 +2,8 @@
 
 A hands-on, 4-session course where you build **MeetupBot** — an AI-powered agent that helps organize AI developer meetups. You'll learn agent-building patterns that transfer to any project, using Claude Code and ngrok AI Gateway.
 
+**Instructor:** [Nick Yeager](ABOUT.md) — AI Solutions Architect, developer tools builder, Tucson AZ
+
 ## Prerequisites
 
 ### Bootcamp Requirements
