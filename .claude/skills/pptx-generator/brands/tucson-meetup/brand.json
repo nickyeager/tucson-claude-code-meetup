@@ -1,0 +1,38 @@
+{
+  "name": "Tucson Claude Code Meetup",
+  "description": "Dark Catppuccin-inspired theme for AI agent workshop slides",
+
+  "colors": {
+    "background": "0F1219",
+    "background_alt": "0A0D12",
+    "text": "E8ECF4",
+    "text_secondary": "9CA3B4",
+    "accent": "E8853D",
+    "accent_secondary": "5B9CF5",
+    "accent_tertiary": "56C495",
+    "code_bg": "313244",
+    "card_bg": "1A2030",
+    "card_bg_alt": "222A3A"
+  },
+
+  "fonts": {
+    "heading": "Inter",
+    "body": "Inter",
+    "code": "JetBrains Mono"
+  },
+
+  "assets": {
+    "logo": null,
+    "logo_dark": null,
+    "icon": null
+  },
+
+  "extra_colors": {
+    "pink": "F38BA8",
+    "green": "A6E3A1",
+    "yellow": "F9E2AF",
+    "surface0": "313244",
+    "surface1": "181825",
+    "mantle": "181D27"
+  }
+}

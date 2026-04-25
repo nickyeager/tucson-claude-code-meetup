@@ -56,7 +56,7 @@ Ask the same question 3 times:
 → Response C (hands-on workshop)
 ```
 
-Usually this is a **problem**.
+Usually this is a **problem**. A single unconstrained attempt is how you get "design slop" — the same generic output every time.
 
 But what if we do it **intentionally**?
 
@@ -192,10 +192,11 @@ The scores tell a story about tradeoffs.
 
 ## Slide 11: Why This Works
 
-**Single attempt:**
+**Single attempt = design slop territory:**
 - Hope it's good
 - Re-run if it isn't
 - No basis for comparison
+- Every output converges to the same generic patterns
 
 **Parallel + evaluation:**
 - 3 different strategies explored
