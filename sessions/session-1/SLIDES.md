@@ -12,7 +12,7 @@
 
 **Nick Yeager** — AI Solutions Architect / nickcyeager.com
 
-Tucson Claude Code Meetup
+Tucson Claude Code Meetup | `github.com/ai-trailblazers/tucson-claude-code-meetup`
 
 ---
 
@@ -228,7 +228,30 @@ If another agent (or your code) needs to read the output, **structure wins**.
 
 ---
 
-## Slide 11: Permissions
+## Slide 11: How Claude Code Reads Your Project
+
+# How Claude Code Reads Your Project
+
+| What Claude Does | What It Means For You |
+|---|---|
+| **Scans project structure** at session start | It already knows your file tree |
+| **Reads files on demand** | Say "read data/venues.json" — it just works |
+| **Searches across files** | "Find all $ARGUMENTS usage" finds every match |
+| **1M token context** | Your entire project likely fits in memory |
+
+### Pro tip:
+
+Mention key files explicitly in `CLAUDE.md` — guaranteed inclusion every conversation:
+
+```markdown
+## Data Locations
+- Venues: data/venues.json
+- Speakers: data/speakers.json
+```
+
+---
+
+## Slide 12: Permissions
 
 # Permissions
 
@@ -258,7 +281,7 @@ Claude Code asks before running commands. You can pre-configure trust.
 
 ---
 
-## Slide 12: Connecting to an LLM Provider
+## Slide 13: Connecting to an LLM Provider
 
 # Connecting to an LLM Provider
 
@@ -284,7 +307,7 @@ All exercises work identically regardless of which option you choose.
 
 ---
 
-## Slide 13: ngrok AI Gateway
+## Slide 14: ngrok AI Gateway
 
 # ngrok AI Gateway
 
@@ -306,7 +329,7 @@ Your App  --->  ngrok AI Gateway  --->  Anthropic
 
 ---
 
-## Slide 14: AI Gateway Landscape
+## Slide 15: AI Gateway Landscape
 
 # AI Gateway Landscape
 
@@ -323,7 +346,7 @@ ngrok is one of several AI gateways worth knowing about:
 
 ---
 
-## Slide 15: Provider Setup
+## Slide 16: Provider Setup
 
 # Provider Setup
 
@@ -349,7 +372,7 @@ See `sessions/SETUP-GUIDE.md` for detailed instructions.
 
 ---
 
-## Slide 16: Slash Commands
+## Slide 17: Slash Commands
 
 # Slash Commands
 
@@ -377,7 +400,7 @@ Custom workflows that live in your project.
 
 ---
 
-## Slide 17: Anatomy of a Slash Command
+## Slide 18: Anatomy of a Slash Command
 
 # Anatomy of a Slash Command
 
@@ -400,7 +423,7 @@ the schema in CLAUDE.md.
 
 ---
 
-## Slide 18: LIVE DEMO — Building /plan-event
+## Slide 19: LIVE DEMO — Building /plan-event
 
 # LIVE DEMO: Building /plan-event
 
@@ -429,7 +452,7 @@ the schema in CLAUDE.md.
 
 ---
 
-## Slide 19: Power Keywords
+## Slide 20: Power Keywords
 
 # Power Keywords
 
@@ -453,7 +476,7 @@ If everything is `IMPORTANT`, nothing is. Reserve these for rules that **truly m
 
 ---
 
-## Slide 20: Tips & Gotchas
+## Slide 21: Tips & Gotchas
 
 # Tips & Gotchas
 
@@ -471,7 +494,47 @@ If everything is `IMPORTANT`, nothing is. Reserve these for rules that **truly m
 
 ---
 
-## Slide 21: BUILD TIME
+## Slide 22: When Things Break
+
+# When Things Break
+
+Common issues during build time and how to fix them:
+
+| Problem | Symptom | Fix |
+|---------|---------|-----|
+| API key missing | "authentication error" | `echo $ANTHROPIC_API_KEY` — is it set? |
+| Invalid JSON output | Broken or partial JSON | Add stricter schema rules to CLAUDE.md |
+| Command not found | `/plan-event` doesn't work | Check `.claude/commands/` path spelling |
+| Permission denied | Claude keeps asking to approve | `Shift+Tab` for Auto Mode |
+| Wrong output format | Freeform text instead of JSON | Add `IMPORTANT: Output MUST be JSON` to CLAUDE.md |
+
+**Pro tip:** Commit before debugging so you can `git checkout .` to rollback.
+
+---
+
+## Slide 23: The Iteration Loop
+
+# The Iteration Loop
+
+How to improve your agent's output over time:
+
+```
+Ask Claude  →  Read Output  →  Spot Problems  →  Update CLAUDE.md  →  Ask Again
+     ↑                                                                    │
+     └────────────────────────────────────────────────────────────────────┘
+```
+
+### The pattern:
+1. **Run** your slash command
+2. **Evaluate** — does the output match the schema? Are speakers real?
+3. **Refine** — update CLAUDE.md with specifics, not vibes
+4. **Re-test** with the same input to verify the fix
+
+Every correction you encode in CLAUDE.md prevents the same mistake across **all future commands**.
+
+---
+
+## Slide 24: BUILD TIME
 
 # BUILD TIME
 
@@ -493,7 +556,7 @@ Raise your hand if you get stuck. Help your neighbor first.
 
 ---
 
-## Slide 22: Checkpoint
+## Slide 25: Checkpoint
 
 # Checkpoint — What You Should Have
 
@@ -508,7 +571,7 @@ Raise your hand if you get stuck. Help your neighbor first.
 
 ---
 
-## Slide 23: What's Next — Session 2
+## Slide 26: What's Next — Session 2
 
 # What's Next: Session 2
 
@@ -523,7 +586,7 @@ Raise your hand if you get stuck. Help your neighbor first.
 
 ---
 
-## Slide 24: Session 1 Recap
+## Slide 27: Session 1 Recap
 
 # Session 1 Recap
 

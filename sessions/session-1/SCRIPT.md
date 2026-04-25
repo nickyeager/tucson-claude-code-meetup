@@ -1,6 +1,6 @@
 # Session 1 Speaker Script
 
-Total time: ~65 minutes (30 min instruction, 30 min exercise, 5 min wrap-up)
+Total time: ~68 minutes (34 min instruction, 30 min exercise, 4 min wrap-up)
 
 ---
 
@@ -148,11 +148,24 @@ claude
 
 **Tip for common questions:** "Someone might ask 'can I have multiple CLAUDE.md files?' Yes — you can have them at different directory levels. Claude reads the nearest one first, then walks up. But for now, one at the root is all you need."
 
+**Transition:** "Before we move on, let me explain how Claude actually sees your project."
+
+---
+
+## Slide 11: How Claude Code Reads Your Project
+**Time: 1 min**
+
+"Claude Code isn't just reading your prompts. It scans your entire project structure at the start of every session. It knows your file tree, your directory layout, everything."
+
+"That means you can say 'read data/venues.json' and it just works — you don't need to paste file contents into the chat. You can say 'find all files that use $ARGUMENTS' and it searches across your whole project."
+
+"The context window is about a million tokens. Your entire project likely fits. The practical tip: mention your key files explicitly in CLAUDE.md. That way Claude references them every single conversation."
+
 **Transition:** "Quick note on permissions before we get to the fun stuff."
 
 ---
 
-## Slide 11: Permissions
+## Slide 12: Permissions
 **Time: 1 min**
 
 "Claude Code asks permission before running commands. That's good — you want that guardrail. But if it's asking you to approve `git commit` for the twentieth time, it gets old."
@@ -165,7 +178,7 @@ claude
 
 ---
 
-## Slide 12: Connecting to an LLM Provider
+## Slide 13: Connecting to an LLM Provider
 **Time: 2 min**
 
 "Claude Code needs an LLM behind it. You've got three options."
@@ -182,7 +195,7 @@ claude
 
 ---
 
-## Slide 13: ngrok AI Gateway
+## Slide 14: ngrok AI Gateway
 **Time: 1 min**
 
 "ngrok AI Gateway is a reverse proxy for AI — same concept as putting nginx in front of your web servers, but for language models."
@@ -195,7 +208,7 @@ claude
 
 ---
 
-## Slide 14: AI Gateway Landscape
+## Slide 15: AI Gateway Landscape
 **Time: 1 min**
 
 "There are several AI gateways worth knowing about. ngrok is the one we cover because it works directly with Claude Code, but here are the others."
@@ -208,7 +221,7 @@ claude
 
 ---
 
-## Slide 15: Provider Setup
+## Slide 16: Provider Setup
 **Time: 2 min**
 
 [DEMO] Show both options:
@@ -223,7 +236,7 @@ claude
 
 ---
 
-## Slide 16: Slash Commands
+## Slide 17: Slash Commands
 **Time: 1 min**
 
 "Slash commands are custom workflows that live in your project. You create a markdown file in `.claude/commands/`, and it becomes a command you can run."
@@ -236,7 +249,7 @@ claude
 
 ---
 
-## Slide 17: Anatomy of a Slash Command
+## Slide 18: Anatomy of a Slash Command
 **Time: 1 min**
 
 "Here's our plan-event command. It's just markdown with instructions. Step 1: read CLAUDE.md. Step 2: generate the plan. Step 3: include all the required fields. Step 4: save it. Step 5: commit."
@@ -249,7 +262,7 @@ claude
 
 ---
 
-## Slide 18: LIVE DEMO — Building /plan-event
+## Slide 19: LIVE DEMO — Building /plan-event
 **Time: 3 min**
 
 [DEMO] In Claude Code:
@@ -268,7 +281,7 @@ claude
 
 ---
 
-## Slide 19: Power Keywords
+## Slide 20: Power Keywords
 **Time: 1 min**
 
 "There are certain words that Claude pays extra attention to. IMPORTANT elevates priority. MUST and NEVER are hard constraints. 'Proactively' means 'do this without asking me first.'"
@@ -283,18 +296,42 @@ claude
 
 ---
 
-## Slide 20: Tips & Gotchas
+## Slide 21: Tips & Gotchas
 **Time: 1 min**
 
 "Quick hits. Be specific in CLAUDE.md — give it schemas and examples, not vibes. Commit before you experiment — save points, remember? And don't say 'production-ready' in your instructions. It means nothing to an AI. Say exactly what you mean."
 
 "The biggest mistake I see beginners make: vague rules. 'Make good code' is useless. 'All functions must have type hints and Google-style docstrings' is useful. Be the annoyingly specific tech lead."
 
+**Transition:** "Two more things before I set you loose — what to do when things break, and the loop that makes your agent better over time."
+
+---
+
+## Slide 22: When Things Break
+**Time: 1 min**
+
+"During build time, things will break. That's normal. Here's the cheat sheet."
+
+"API key not set? Run `echo $ANTHROPIC_API_KEY` and check if it's empty. Command not found? Check the spelling of `.claude/commands/` — the dot and the plural trip people up. Getting freeform text instead of JSON? Add `IMPORTANT: Output MUST be JSON` to your CLAUDE.md. Permission prompts driving you crazy? Hit Shift+Tab to toggle Auto Mode."
+
+"And the most important one: commit before you start debugging. If you mess something up, `git checkout .` gets you back to your last save point."
+
+---
+
+## Slide 23: The Iteration Loop
+**Time: 1 min**
+
+"This is the pattern you'll use for the rest of the course. Run your command. Read the output. Spot what's wrong. Update CLAUDE.md to fix it. Run the same command again."
+
+"The key insight: don't just re-prompt. Update the rules. If Claude used a made-up speaker instead of one from your data file, add a rule: 'speakers MUST come from data/speakers.json.' Now that mistake is fixed for every future run, every future command, every future session."
+
+"Every correction you encode in CLAUDE.md compounds. That's why it's the highest-leverage file in your project."
+
 **Transition:** "Alright, it's build time."
 
 ---
 
-## Slide 21: BUILD TIME
+## Slide 24: BUILD TIME
 **Time: 30 min (exercise)**
 
 "Here's where you get your hands dirty. The exercise is in `sessions/session-1/EXERCISE.md`. Your goal: get `/plan-event` generating structured JSON."
@@ -318,7 +355,7 @@ claude
 
 ---
 
-## Slide 22: Checkpoint
+## Slide 25: Checkpoint
 **Time: 2 min**
 
 "Alright, let's check in. Go through this list. Git repo — check? CLAUDE.md — check? Project structure with a data directory? ngrok configured or at least direct API working? The slash command runs? And you've got at least one event plan saved?"
@@ -333,7 +370,7 @@ claude
 
 ---
 
-## Slide 23: What's Next — Session 2
+## Slide 26: What's Next — Session 2
 **Time: 1 min**
 
 "Session 2 is where it gets really interesting. We're going to talk about context engineering — and I don't mean prompting. I mean building blueprints that shape how your agent thinks about entire workflows."
@@ -346,7 +383,7 @@ claude
 
 ---
 
-## Slide 24: Session 1 Recap
+## Slide 27: Session 1 Recap
 **Time: 1 min**
 
 "Three things. Write them down if you want."
@@ -372,9 +409,10 @@ claude
 | Section | Slides | Time |
 |---|---|---|
 | Intro & Setup | 1-6 | 10 min |
-| CLAUDE.md & Structure | 7-10 | 7 min |
-| Providers & Gateways | 11-15 | 7 min |
-| Slash Commands & Tips | 16-20 | 7 min |
-| **Build Time** | **21** | **30 min** |
-| Wrap-up | 22-24 | 4 min |
-| **Total** | | **~65 min** |
+| CLAUDE.md & How It Works | 7-11 | 8 min |
+| Providers & Gateways | 12-16 | 7 min |
+| Slash Commands & Tips | 17-21 | 7 min |
+| Debugging & Iteration | 22-23 | 2 min |
+| **Build Time** | **24** | **30 min** |
+| Wrap-up | 25-27 | 4 min |
+| **Total** | | **~68 min** |
