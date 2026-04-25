@@ -10,6 +10,8 @@
 
 *From zero to structured event planning in 60 minutes*
 
+**Nick Yeager** — AI Solutions Architect / nickcyeager.com
+
 Tucson Claude Code Meetup
 
 ---

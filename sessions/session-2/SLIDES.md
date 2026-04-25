@@ -10,6 +10,8 @@
 
 *From one-off prompts to reusable systems*
 
+**Nick Yeager** — AI Solutions Architect / nickcyeager.com
+
 ---
 
 ## Slide 2: Recap — Where We Left Off

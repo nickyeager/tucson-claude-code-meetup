@@ -339,6 +339,8 @@ Resources are on the screen. Claude Code docs, the Agent SDK, ngrok AI Gateway, 
 
 [PAUSE]
 
-Look at what you built in four sessions. You walked in knowing how to prompt an LLM. You're walking out knowing how to architect agent systems. That's a real skill. Take it and build something great.
+Look at what you built in four sessions. You walked in knowing how to prompt an LLM. You're walking out knowing how to architect agent systems.
+
+My contact info is on the screen — nickcyeager.com, GitHub, LinkedIn. If you build something with these patterns, I'd love to hear about it. The course repo has everything we covered.
 
 Thank you. Questions?

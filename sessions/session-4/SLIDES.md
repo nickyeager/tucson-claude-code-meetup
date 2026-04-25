@@ -10,6 +10,8 @@
 
 *Generate multiple variants, score them, pick the best one*
 
+**Nick Yeager** — AI Solutions Architect / nickcyeager.com
+
 ---
 
 ## Slide 2: Recap -- The Full System So Far
@@ -441,6 +443,7 @@ Same model. What changed was the context, the structure, and the feedback.
 - [Claude Code Best Practices](https://code.claude.com/docs/en/best-practices)
 - Course Repo: [github.com/nickyeager/tucson-claude-code-meetup](https://github.com/nickyeager/tucson-claude-code-meetup)
 
-**Questions?**
+**Nick Yeager** — AI Solutions Architect
+[nickcyeager.com](https://nickcyeager.com) | [GitHub](https://github.com/nickyeager) | [LinkedIn](https://www.linkedin.com/in/nicholas-yeager/)
 
-Thank you for building with us.
+**Questions?**

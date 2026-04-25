@@ -11,6 +11,8 @@
 
 *Split one overloaded agent into focused specialists*
 
+**Nick Yeager** — AI Solutions Architect / nickcyeager.com
+
 ---
 
 ## Slide 2: Recap — Where We Are
