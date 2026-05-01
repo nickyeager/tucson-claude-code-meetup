@@ -583,8 +583,8 @@ Raise your hand if you get stuck. Help your neighbor first.
 
 ## Context Engineering: Blueprints Beat Prompts
 
-- **INITIAL.md** — project bootstrap instructions
-- **PRP (Prompt-Reusable Patterns)** — reusable context documents
+- **INITIAL.md** — structured feature requests the AI can actually execute
+- **PRPs (Product Requirements Prompts)** — implementation blueprints with validation gates
 - **Comms system** — draft emails, social posts, announcements
 - Moving from single commands to **coordinated workflows**
 

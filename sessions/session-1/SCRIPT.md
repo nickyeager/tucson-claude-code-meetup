@@ -375,7 +375,7 @@ claude
 
 "Session 2 is where it gets really interesting. We're going to talk about context engineering — and I don't mean prompting. I mean building blueprints that shape how your agent thinks about entire workflows."
 
-"We'll cover INITIAL.md — that's your project bootstrap file. PRPs — prompt-reusable patterns. And we'll build a comms system so MeetupBot can draft emails and social posts."
+"We'll cover INITIAL.md — a structured feature-request format the AI can actually execute. PRPs — Product Requirements Prompts, which are implementation blueprints with validation gates. And we'll build a comms system so MeetupBot can draft emails and social posts."
 
 "Session 1 was about getting the tools working. Session 2 is about wiring them together into a pipeline."
 
