@@ -4,6 +4,23 @@
 
 ---
 
+## Instructor Prep — Demo Root
+
+All live demos in this session (Slides 7, 13, 14) read files like `events/building-rag-pipelines.json` and `examples/sample-event-plan.json`. These exist in `solution/session-1/`, **not** in the course repo root.
+
+**Before the session, in a separate terminal:**
+```bash
+cp -r solution/session-1 ~/dry-run-meetup
+cd ~/dry-run-meetup
+git init && git add -A && git commit -m "Session 1 state"
+cp -r ../tucson-meetup/templates/.claude/commands/* .claude/commands/   # generate-prp, execute-prp
+claude
+```
+
+This gives you a clean post-Session-1 demo workspace with the PRP commands already copied in. Run all live demos from there. Keep a second terminal at the course repo root for the slides.
+
+---
+
 ## Slide 1: Title
 **[~1 min]**
 
@@ -18,7 +35,7 @@
 ## Slide 2: Recap — Where We Left Off
 **[~1 min]**
 
-"So after Session 1, everyone should have a git repo with a CLAUDE.md, a working `/plan-event` command, ngrok connected, and some sample data. If anyone is missing any of those pieces, flag me during the exercise and we'll get you caught up."
+"So after Session 1, everyone should have a git repo with a CLAUDE.md, a working `/plan-event` command, an LLM provider connected — most of you are on Claude Code Max — and some sample data. If anyone is missing any of those pieces, flag me during the exercise and we'll get you caught up."
 
 "Today we're building the comms and scheduling system — but we're doing it with a completely different approach than last time. Last session was about getting hands on the tool. This session is about using it *well*."
 
@@ -52,11 +69,26 @@
 
 *Take 1-2 responses. Validate their experiences.*
 
-**Transition:** "So if the problem is context, what's the solution? Let's compare two approaches."
+**Transition:** "Before we get to the solution, I want to show you what 'no context' looks like in the wild."
 
 ---
 
-## Slide 5: Prompt Engineering vs. Context Engineering
+## Slide 5: You've Already Seen This Problem
+**[~2 min]**
+
+"There's a researcher named Adrian Krebs who scored 500 Show HN sites for AI design markers. Two-thirds of them used the same handful of patterns. Same Inter font, same purple gradient hero, same shadcn cards with icons on top, same 'INTRODUCING' badge. It's an entire aesthetic — and it's not because designers all agreed on it. It's because the AI had nothing else to go on."
+
+"These sites aren't bad. They're just identical. The AI fell back to the most common patterns in its training data because nobody told it what to do differently."
+
+"I want you to hold onto this image because **the same thing happens to your agent's output.** Generic event plans, generic emails, generic schedules. No examples, no brand, no constraints — and the AI defaults to the average of everything it's seen."
+
+[PAUSE] "The fix for design slop is the same as the fix for agent slop: give the AI a brand, examples, constraints, and a system. That's context engineering."
+
+**Transition:** "Now let's compare prompt engineering and context engineering side by side."
+
+---
+
+## Slide 6: Prompt Engineering vs. Context Engineering
 **[~2 min]**
 
 "Prompt engineering is what most people think AI work is. You craft the perfect sentence, you add 'think step by step,' you try different phrasings until something works. It's like writing a sticky note and hoping the person reading it has enough background to figure out what you mean."
@@ -69,8 +101,10 @@
 
 ---
 
-## Slide 6: LIVE DEMO — The Difference
+## Slide 7: LIVE DEMO — The Difference
 **[~3 min]**
+
+> **Cwd:** Run from the post-Session-1 demo workspace described in "Instructor Prep — Demo Root" at the top of this file. The prompts below reference `events/`, `data/`, and `examples/` paths that only exist in that pre-staged directory — they will fail from the course-repo root.
 
 [DEMO] Open Claude Code.
 
@@ -95,7 +129,7 @@
 
 ---
 
-## Slide 7: The Context Engineering Stack
+## Slide 8: The Context Engineering Stack
 **[~1 min]**
 
 "Think of this as layers of a briefing packet. CLAUDE.md is always loaded — it's the baseline rules. Examples give the AI patterns to match. Data gives it real information. INITIAL.md tells it what feature to build. PRPs tell it exactly how. And slash commands make it all reusable."
@@ -106,7 +140,7 @@
 
 ---
 
-## Slide 8: INITIAL.md — The Feature Request
+## Slide 9: INITIAL.md — The Feature Request
 **[~2 min]**
 
 "INITIAL.md is a structured feature request. Four sections. FEATURE is what to build — be specific about inputs and outputs. EXAMPLES points to files the AI should learn from. DOCUMENTATION covers schemas and constraints. And OTHER CONSIDERATIONS is where you put the gotchas."
@@ -124,7 +158,7 @@
 
 ---
 
-## Slide 9: Good vs. Bad Feature Requests
+## Slide 10: Good vs. Bad Feature Requests
 **[~1 min]**
 
 "The bad example is six words. 'Build a scheduling system for meetups.' What does Claude do with that? It guesses. And it guesses wrong."
@@ -137,7 +171,7 @@
 
 ---
 
-## Slide 10: PRPs — Implementation Blueprints
+## Slide 11: PRPs — Implementation Blueprints
 **[~2 min]**
 
 "PRP stands for Product Requirements Prompt. Think of it like a PRD — a product requirements document — but designed specifically for an AI coding assistant to execute."
@@ -157,7 +191,7 @@
 
 ---
 
-## Slide 11: The PRP Workflow
+## Slide 12: The PRP Workflow
 **[~1 min]**
 
 "You write INITIAL.md — that's the WHAT. You run `/generate-prp` and Claude creates the PRP — that's the HOW. Then you run `/execute-prp` and Claude builds the code."
@@ -168,8 +202,10 @@
 
 ---
 
-## Slide 12: LIVE DEMO — /generate-prp
+## Slide 13: LIVE DEMO — /generate-prp
 **[~3 min]**
+
+> **Cwd:** Run from the post-Session-1 demo workspace described in "Instructor Prep — Demo Root" at the top of this file. INITIAL.md should already exist in that workspace (paste in the example from `templates/INITIAL_EXAMPLE.md` or the one from the Exercise) before the demo.
 
 [DEMO] In Claude Code, run: `/generate-prp INITIAL.md`
 
@@ -189,8 +225,10 @@
 
 ---
 
-## Slide 13: LIVE DEMO — /execute-prp
+## Slide 14: LIVE DEMO — /execute-prp
 **[~3 min]**
+
+> **Cwd:** Same demo workspace as Slide 13. Run `/execute-prp` immediately after `/generate-prp` so the PRP file is fresh.
 
 [DEMO] Run: `/execute-prp PRPs/meetup-comms.md`
 
@@ -211,7 +249,7 @@
 
 ---
 
-## Slide 14: The Examples/ Folder Trick
+## Slide 15: The Examples/ Folder Trick
 **[~1 min]**
 
 "This is maybe the highest-leverage thing you'll learn today. If you want the AI to produce a specific style of output, don't describe it — show it. Put example files in an examples/ folder and point to them."
@@ -224,7 +262,7 @@
 
 ---
 
-## Slide 15: Composable Slash Commands
+## Slide 16: Composable Slash Commands
 **[~1 min]**
 
 "This is the architecture. `/plan-event` outputs JSON. `/build-schedule` reads that JSON. `/draft-announcement` reads the same JSON. Each command is simple on its own, but they compose into a pipeline."
@@ -235,7 +273,7 @@
 
 ---
 
-## Slide 16: $ARGUMENTS in Slash Commands
+## Slide 17: $ARGUMENTS in Slash Commands
 **[~1 min]**
 
 "When you type `/build-schedule events/rag-pipelines.json`, everything after the command name becomes $ARGUMENTS. Inside the command markdown file, $ARGUMENTS gets replaced with that file path."
@@ -248,7 +286,7 @@
 
 ---
 
-## Slide 17: Tips & Gotchas
+## Slide 18: Tips & Gotchas
 **[~1 min]**
 
 "Biggest mistake I see: people skip INITIAL.md and go straight to asking Claude to build things. Don't do that. The 15 minutes you spend on INITIAL.md saves you an hour of debugging."
@@ -265,7 +303,7 @@
 
 ---
 
-## Slide 18: BUILD TIME
+## Slide 19: BUILD TIME
 **[~40 min — exercise time]**
 
 "Open `sessions/session-2/EXERCISE.md` and follow the steps. You're building the full pipeline: plan-event into build-schedule into draft-announcement."
@@ -293,7 +331,7 @@
 
 ---
 
-## Slide 19: Checkpoint
+## Slide 20: Checkpoint
 **[~2 min]**
 
 "Alright, let's check in. Raise your hand if you have a working INITIAL.md."
@@ -318,7 +356,7 @@
 
 ---
 
-## Slide 20: What's Next — Session 3
+## Slide 21: What's Next — Session 3
 **[~1 min]**
 
 "Right now your MeetupBot is a solo performer. One agent does everything — planning, scheduling, writing emails. It works, but it doesn't scale well."
@@ -331,7 +369,7 @@
 
 ---
 
-## Slide 21: Session 2 Recap
+## Slide 22: Session 2 Recap
 **[~2 min]**
 
 "Three things to take away from today."

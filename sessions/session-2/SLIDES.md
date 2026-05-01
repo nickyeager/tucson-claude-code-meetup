@@ -21,7 +21,7 @@ Tucson Claude Code Meetup | `github.com/ai-trailblazers/tucson-claude-code-meetu
 You have:
 - A git repo with `CLAUDE.md` defining your agent's personality and schemas
 - `/plan-event` that generates structured JSON event plans
-- ngrok AI Gateway connected and routing traffic
+- An LLM provider connected — Claude Code Max (default), Anthropic API, or ngrok
 - Sample venue and speaker data in `data/`
 
 **Today:** You'll build the comms and scheduling system using a **completely different approach**.
