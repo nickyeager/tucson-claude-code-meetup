@@ -317,26 +317,24 @@ Each command reads **structured data** from the previous one.
 ## Slide 17: $ARGUMENTS in Slash Commands
 
 ```markdown
-# .claude/commands/build-schedule.md
+---
+name: build-schedule
+description: Build a schedule from an event plan
+argument-hint: [event-plan.json]
+allowed-tools: Read, Write
+---
 
-Build a detailed schedule for the event plan at: $ARGUMENTS
+Build a schedule for the event plan at: $ARGUMENTS
 
 ## Steps:
-1. Read the event plan JSON at $ARGUMENTS
-2. Read data/speakers.json for speaker availability
-3. Fit talks into time slots respecting availability
-4. Add breaks every 90 minutes
-5. Output markdown table to schedules/ and JSON to schedules/
+1. Read $ARGUMENTS and data/speakers.json
+2. Fit talks into time slots, breaks every 90 min
+3. Output markdown + JSON to schedules/
 ```
 
-**Usage:**
-```
-/build-schedule events/rag-pipelines.json
-```
+**Usage:** `/build-schedule events/rag-pipelines.json`  →  `$ARGUMENTS` becomes `events/rag-pipelines.json`
 
-`$ARGUMENTS` becomes `events/rag-pipelines.json`
-
-This is how you make commands reusable across different events.
+> **Modern style:** YAML frontmatter (`name`, `description`, `argument-hint`, `allowed-tools`) is the current convention. Plain-markdown commands still work. Skills (`.claude/skills/<name>/SKILL.md`) are the same idea with extra capabilities — Session 3.
 
 ---
 

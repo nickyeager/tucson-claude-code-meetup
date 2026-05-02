@@ -287,6 +287,10 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 "This is how you make commands reusable. The command doesn't hardcode which event — it takes the path as input. Same command works for any event plan."
 
+"Quick note on the frontmatter at the top. The YAML block — name, description, argument-hint, allowed-tools — is the current convention. The description tells Claude when to invoke the command. Argument-hint shows up in autocomplete. Allowed-tools pre-authorizes what the command can do without prompting. Plain markdown without frontmatter still works, but for anything you'll reuse, write the frontmatter — the templates we shipped use it."
+
+"And one preview for Session 3: skills are the same idea — `.claude/skills/<name>/SKILL.md` — with a few extra capabilities like progressive disclosure and isolated subagent execution. We'll use them next session."
+
 "Simple mechanism, powerful result. This is what makes the pipeline composable."
 
 **Transition:** "Before we jump into the exercise, a few tips."

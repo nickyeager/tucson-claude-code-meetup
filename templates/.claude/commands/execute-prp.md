@@ -1,3 +1,10 @@
+---
+name: execute-prp
+description: Execute a reviewed PRP — read the blueprint, follow the implementation plan in order, run the validation gates, and report deviations.
+argument-hint: [PRPs/your-prp.md]
+allowed-tools: Read, Write, Edit, Glob, Grep
+---
+
 # Execute PRP
 
 Execute the implementation plan defined in a PRP file.

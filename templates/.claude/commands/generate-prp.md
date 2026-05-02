@@ -1,3 +1,10 @@
+---
+name: generate-prp
+description: Generate a Product Requirements Prompt (PRP) blueprint from an INITIAL.md feature request. Reads the feature request, researches the codebase, and writes a reviewable PRP to PRPs/{slug}.md.
+argument-hint: [INITIAL.md]
+allowed-tools: Read, Write, Glob, Grep
+---
+
 # Generate PRP
 
 Generate a comprehensive Product Requirements Prompt (PRP) from a feature request.
