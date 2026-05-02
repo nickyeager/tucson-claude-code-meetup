@@ -63,7 +63,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 4: The Core Problem
+## Slide 4: Why agents fail
 **[~2 min]**
 
 "Here's something I see constantly. Someone builds an AI agent, it produces mediocre output, and they say 'the model isn't good enough' or 'AI can't do this task.' But when you dig in, the model was perfectly capable. It just didn't have the right information."
@@ -80,7 +80,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 5: You've Already Seen This Problem
+## Slide 5: Design Slop
 **[~2 min]**
 
 "There's a researcher named Adrian Krebs who scored 500 Show HN sites for AI design markers. Two-thirds of them used the same handful of patterns. Same Inter font, same purple gradient hero, same shadcn cards with icons on top, same 'INTRODUCING' badge. It's an entire aesthetic — and it's not because designers all agreed on it. It's because the AI had nothing else to go on."
@@ -256,7 +256,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 15: The Examples/ Folder Trick
+## Slide 15: The Examples/ Folder
 **[~1 min]**
 
 "This is maybe the highest-leverage thing you'll learn today. If you want the AI to produce a specific style of output, don't describe it — show it. Put example files in an examples/ folder and point to them."
@@ -314,7 +314,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 19: BUILD TIME
+## Slide 19: Exercise
 **[~40 min — exercise time]**
 
 "Open `sessions/session-2/EXERCISE.md` and follow the steps. You're building the full pipeline: plan-event into build-schedule into draft-announcement."
@@ -380,7 +380,7 @@ Run all live demos from this directory. Keep a second terminal at the course rep
 
 ---
 
-## Slide 22: Session 2 Recap
+## Slide 22: Recap
 **[~2 min]**
 
 "Three things to take away from today."
